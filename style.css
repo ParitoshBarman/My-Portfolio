@@ -48,15 +48,48 @@ nav a {
     animation: slideTop 0.5s ease forwards;
 }
 
+
+.container {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 23px;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #0ef;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+}
+
+
+
 nav a:hover {
     color: #0ef;
 }
 
-main{
+main {
     max-width: 1500px;
     margin: auto;
 }
-main>section{
+
+main>section {
     width: 100%;
 }
 
@@ -128,6 +161,7 @@ main>section{
 
 .intro>div>p {
     font-size: 20px;
+    line-height: 26px;
     opacity: 0;
     animation: slideLeft 1s ease forwards;
     animation-delay: 1s;
@@ -184,7 +218,7 @@ main>section{
 
 
 
-.about{
+.about {
     max-width: 1100px;
     margin: auto;
     margin-bottom: 150px;
@@ -199,10 +233,11 @@ main>section{
 
 }
 
-.about>div:nth-child(2){
+.about>div:nth-child(2) {
     max-width: 600px;
 }
-.aboutImage{
+
+.aboutImage {
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -212,23 +247,26 @@ main>section{
     align-items: center;
     box-shadow: 0 0 25px #0ef;
 }
-.aboutImage>img{
+
+.aboutImage>img {
     width: 98%;
     border-radius: 50%;
 }
 
 
-.aboutText{
+.aboutText {
     width: 69%;
 }
 
-.aboutText>h2{
+.aboutText>h2 {
     font-size: 43px;
 }
-.underspan{
+
+.underspan {
     color: #0ef;
 }
-.aboutText>h4{
+
+.aboutText>h4 {
     font-size: 29px;
     font-weight: 600;
     line-height: 1.7;
@@ -236,23 +274,29 @@ main>section{
     margin: 10px 0 10px;
 }
 
+.aboutText>p{
+    line-height: 25px;
+}
 
-.SkillsOverview{
+
+.SkillsOverview {
     width: 100%;
     margin-bottom: 130px;
 }
-.conteiner{
+
+.conteiner {
     width: 100%;
     max-width: none;
 }
-.cards{
+
+.cards {
     color: aliceblue;
     font-size: 15px;
     line-height: 1.4;
     margin-bottom: 4rem;
 }
 
-.AllSubTitle{
+.AllSubTitle {
     text-align: center;
     font-size: 43px;
     margin-top: 50px;
@@ -261,7 +305,7 @@ main>section{
 }
 
 
-.cards{
+.cards {
     margin-top: 40px;
     display: flex;
     justify-content: center;
@@ -269,7 +313,8 @@ main>section{
     flex-wrap: wrap;
     gap: 50px;
 }
-.cards>div{
+
+.cards>div {
     border-radius: 20px;
     background-color: transparent;
     padding: 40px;
@@ -280,26 +325,26 @@ main>section{
 
 }
 
-.cards>div i{
+.cards>div i {
     font-size: 50px;
     margin-bottom: 30px;
 }
 
-.cards>div h3{
+.cards>div h3 {
     font-size: 30px;
     font-weight: 500;
     margin-bottom: 10px;
 }
 
-.cards>div:hover{
+.cards>div:hover {
     transform: translateY(-10px);
-    
+
 }
 
 
 
 
-.skillsSection{
+.skillsSection {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -307,39 +352,45 @@ main>section{
     align-items: flex-start;
     flex-wrap: wrap;
 }
-.container1{
+
+.container1 {
     width: 600px;
     padding: 75px 90px;
 }
-.title1{
+
+.title1 {
     text-align: center;
     text-decoration: underline;
     text-underline-offset: 10px;
     text-decoration-thickness: 5px;
     margin-bottom: 50px;
+    line-height: 50px;
 }
 
-.bar{
+.bar {
     font-size: 25px;
 }
-.techSkillBars .bar{
+
+.techSkillBars .bar {
     margin: 40px 0;
 }
 
-.techSkillBars .bar:last-child{
+.techSkillBars .bar:last-child {
     margin-bottom: 0;
 }
 
-.techSkillBars .bar .info{
+.techSkillBars .bar .info {
     margin-bottom: 5px;
 }
-.techSkillBars .bar .info span{
+
+.techSkillBars .bar .info span {
     font-size: 17px;
     font-weight: 500;
     animation: showText 0.5s linear forwards;
     opacity: 0;
 }
-.techSkillBars .bar .progressLine{
+
+.techSkillBars .bar .progressLine {
     position: relative;
     border-radius: 10px;
     width: 100%;
@@ -353,7 +404,7 @@ main>section{
 
 
 
-.techSkillBars .bar .progressLine span{
+.techSkillBars .bar .progressLine span {
     height: 100%;
     background-color: #0ef;
     position: absolute;
@@ -363,23 +414,28 @@ main>section{
     transform-origin: left;
 
 }
-.html span{
-    width: 90%;
-}
-.css span{
-    width: 85%;
-}
-.javascript span{
-    width: 90%;
-}
-.react span{
-    width: 30%;
-}
-.python span{
+
+.html span {
     width: 90%;
 }
 
-.progressLine span::after{
+.css span {
+    width: 85%;
+}
+
+.javascript span {
+    width: 90%;
+}
+
+.react span {
+    width: 30%;
+}
+
+.python span {
+    width: 90%;
+}
+
+.progressLine span::after {
     position: absolute;
     padding: 1px 8px;
     background-color: #000000;
@@ -393,27 +449,31 @@ main>section{
 
 }
 
-.progressLine span::before{
+.progressLine span::before {
     content: "";
 }
 
-.html span::after{
-    content: "90%";
-}
-.css span::after{
-    content: "85%";
-}
-.javascript span::after{
-    content: "90%";
-}
-.react span::after{
-    content: "30%";
-}
-.python span::after{
+.html span::after {
     content: "90%";
 }
 
-.progressLine span::before{
+.css span::after {
+    content: "85%";
+}
+
+.javascript span::after {
+    content: "90%";
+}
+
+.react span::after {
+    content: "30%";
+}
+
+.python span::after {
+    content: "90%";
+}
+
+.progressLine span::before {
     content: "";
     position: absolute;
     width: 0;
@@ -430,30 +490,32 @@ main>section{
 }
 
 
-.parentBar{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.parentBar {
+    display: flex;
+    justify-content: space-evenly;
+    
+    flex-wrap: wrap;
     gap: 30px;
     row-gap: 60px;
 
 }
-.radialBars{
-    width: 70%;
-    
+
+.radialBars {
+    width: 130px;
+
 
 }
 
-    
 
-.radialBars .progressBar{
+
+.radialBars .progressBar {
     width: 50%;
     height: 170px;
     margin-bottom: 10px;
     position: relative;
 }
 
-.progressBar svg{
+.progressBar svg {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -462,7 +524,7 @@ main>section{
     height: 160px;
 }
 
-.progressBar{
+.progressBar {
     stroke-width: 10;
     stop-color: #000000;
     stroke: #000000;
@@ -474,7 +536,7 @@ main>section{
 }
 
 
-.path{
+.path {
     stroke-width: 10;
     stroke: #0ef;
     fill: transparent;
@@ -484,42 +546,52 @@ main>section{
 }
 
 
-.path1{
+.path1 {
     animation: animationPath1 1s 1s linear forwards;
 }
-.path2{
+
+.path2 {
     animation: animationPath2 1s 1s linear forwards;
 }
-.path3{
+
+.path3 {
     animation: animationPath3 1s 1s linear forwards;
 }
-.path4{
+
+.path4 {
     animation: animationPath4 1s 1s linear forwards;
 }
 
 
-.persentage, .skillText{
+.persentage,
+.skillText {
     text-align: center;
     font-size: 17px;
     font-weight: 500;
 
 }
 
+.persentage{
+    position: relative;
+    bottom: 79px;
+}
 
 
 
 
-.projects{
+.projects {
     width: 100%;
     margin-top: 70px;
 }
-.mainText>h2{
+
+.mainText>h2 {
     font-size: 43px;
     text-align: center;
     margin-bottom: 75px;
 }
-.projectContent{
-    
+
+.projectContent {
+
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -527,37 +599,42 @@ main>section{
     flex-wrap: wrap;
     gap: 40px;
 }
-.projectCard{
+
+.projectCard {
     max-width: 300px;
     padding: 15px;
     border-radius: 8px;
     transition: 0.3s;
     box-shadow: 1px 1px 20px #012290f7, 1px 1px 40px #0053b8f7;
 }
-.projectCard:hover{
+
+.projectCard:hover {
     transform: translateY(-10px);
 }
 
-.projectCard img{
+.projectCard img {
     width: 100%;
     border-radius: 3px;
 }
-.layer>h4{
+
+.layer>h4 {
     font-size: 23px;
     padding: 20px 0;
     text-align: center;
     color: #0ef;
 }
 
-.layer>p{
+.layer>p {
     line-height: 25px;
 }
-.linksection{
+
+.linksection {
     padding: 35px 0 10px 0;
     display: flex;
     justify-content: space-between;
 }
-.linksection>a{
+
+.linksection>a {
     text-decoration: none;
     color: #0ef;
     border: 1px solid #0ef;
@@ -565,55 +642,185 @@ main>section{
     padding: 5px 10px;
 }
 
-.linksection>a:hover{
+.linksection>a:hover {
     background-color: #0ef;
     color: #081b29;
     box-shadow: 0 0 20px #0ef;
 }
 
 
-
-@keyframes animationPath1{
-100%{
-    stroke-dashoffset: 50;
-}
-}
-@keyframes animationPath2{
-100%{
-    stroke-dashoffset: 175;
-}
-}
-@keyframes animationPath3{
-100%{
-    stroke-dashoffset: 125;
-}
-}
-@keyframes animationPath4{
-100%{
-    stroke-dashoffset: 75;
-}
+.allH2Headind {
+    font-size: 43px;
+    text-align: center;
+    margin-bottom: 75px;
 }
 
-@keyframes animate-bar{
-100%{
-    stroke-dashoffset: -1;
-}
+.gitStats {
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 140px;
 }
 
-@keyframes animate{
-    0%{
+.gitStatsImages {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.gitStatsImages>div {
+    width: 369px;
+    transition: 0.3s;
+    /* box-shadow: 1px 1px 20px #012290f7, 1px 1px 40px #0053b8f7; */
+
+}
+
+.gitStatsImages>div:nth-child(2) {
+    width: 270px;
+}
+
+.gitStatsImages>div>img {
+    width: 100%;
+    box-shadow: 1px 1px 20px #012290f7, 1px 1px 40px #0053b8f7;
+    border-radius: 4px;
+}
+
+.gitStatsImages>div:hover {
+    transform: translateY(-10px);
+}
+
+
+.gitContribution {
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 140px;
+}
+
+.contributionSnak {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contributionSnak>img {
+    border-radius: 8px;
+    box-shadow: 1px 1px 20px #012290f7, 1px 1px 40px #0053b8f7;
+    max-width: 98%;
+    transition: 0.3s;
+}
+
+.contributionSnak>img:hover {
+    transform: translateY(-10px);
+}
+
+
+.contact {
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 140px;
+}
+
+.contact>.contactText {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact>.contactText>h3 {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.contact>.contactText>div,
+.contactText>h3 {
+    padding: 0 20px;
+}
+
+
+.contact>.contactText>div>a {
+    font-size: 23px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.contact>.contactText>div>a>i {
+    color: #0ef;
+    border: 2px solid #0ef;
+    border-radius: 50%;
+    padding: 10px;
+    margin: 10px 15px 10px 0;
+}
+
+.contact>.contactText>div>a:hover i {
+    background-color: #0ef;
+    color: #081b29;
+    box-shadow: 0 0 20px #0ef;
+}
+
+.footer {
+    text-align: center;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer>h2 {
+    padding: 20px;
+    box-shadow: 1px 1px 20px #012290f7, 1px 1px 40px #0053b8f7;
+}
+
+
+
+
+@keyframes animationPath1 {
+    100% {
+        stroke-dashoffset: 50;
+    }
+}
+
+@keyframes animationPath2 {
+    100% {
+        stroke-dashoffset: 175;
+    }
+}
+
+@keyframes animationPath3 {
+    100% {
+        stroke-dashoffset: 125;
+    }
+}
+
+@keyframes animationPath4 {
+    100% {
+        stroke-dashoffset: 75;
+    }
+}
+
+@keyframes animate-bar {
+    100% {
+        stroke-dashoffset: -1;
+    }
+}
+
+@keyframes animate {
+    0% {
         transform: scaleX(0);
     }
-    100%{
+
+    100% {
         transform: scaleX(1);
 
     }
 }
-@keyframes showText{
-    0%{
+
+@keyframes showText {
+    0% {
         opacity: 0;
     }
-    100%{
+
+    100% {
         opacity: 1;
 
     }
@@ -632,6 +839,7 @@ main>section{
     }
 
 }
+
 @keyframes slideLeft {
     0% {
         transform: translateX(100px);
@@ -657,6 +865,7 @@ main>section{
     }
 
 }
+
 @keyframes slideButtom {
     0% {
         transform: translateY(-100px);
@@ -671,3 +880,13 @@ main>section{
 }
 
 
+hr{
+    margin: auto;
+    margin-top: 52px;
+    width: 80%;
+}
+
+
+#about{
+    transition: 0.5s;
+}

@@ -7,6 +7,7 @@
     <title>My Portfolio</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
 
 <body>
@@ -16,10 +17,15 @@
         <nav class="navbar">
             <a href="#" style="--i:1" class="active">Home</a>
             <a href="#about" style="--i:2">About</a>
-            <a href="#" style="--i:3">Skill</a>
-            <a href="#" style="--i:4">Project</a>
-            <a href="#" style="--i:5">Contact</a>
+            <a href="#SkillsOverview" style="--i:3">Skill</a>
+            <a href="#projects" style="--i:4">Project</a>
+            <a href="#contact" style="--i:5">Contact</a>
         </nav>
+        <div class="container" onclick="myFunction(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
     </header>
 
 
@@ -30,17 +36,16 @@
                 <h3>Hello, It's me</h3>
                 <h1>Paritosh Barman</h1>
                 <h3>And I am a <span id="text"></span></h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Natus voluptatum voluptas est, dignissimos quia unde vitae ab
+                <p>I'm a full-stack developer with expertise in HTML, CSS, JavaScript, Python, both front-end and back-end. I've successfully completed over 500 unique real-world projects.
                 </p>
 
                 <div class="socalMediaLinkes">
-                    <a href="#" style="--i:7"><i class='bx bxl-linkedin'></i></a>
-                    <a href="#" style="--i:8"><i class='bx bxl-github'></i></a>
-                    <a href="#" style="--i:9"><i class='bx bx-envelope'></i></a>
-                    <a href="#" style="--i:10"><i class='bx bxl-whatsapp'></i></a>
+                    <a href="https://www.linkedin.com/in/paritosh-barman-003257229" target="_blank" style="--i:7"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://github.com/ParitoshBarman" target="_blank" style="--i:8"><i class='bx bxl-github'></i></a>
+                    <a href="mailto:barmanpari163@gmail.com" target="_blank" style="--i:9"><i class='bx bx-envelope'></i></a>
+                    <a href="https://wa.me/919091467852" target="_blank" style="--i:10"><i class='bx bxl-whatsapp'></i></a>
                 </div>
-                <a href="#" class="btn">Download Resume</a>
+                <a href="Paritosh Barman-cap06_211-Frontend Developer (1).pdf" class="btn" download>Download Resume</a>
 
             </div>
             <div class="myimage">
@@ -57,12 +62,8 @@
             </div>
             <div class="aboutText">
                 <h2>About <span class="underspan">Me</span></h2>
-                <h4>Full Stack Developert</h4>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci a odit omnis amet commodi
-                    laboriosam perferendis sint ullam, maiores est ducimus animi cupiditate praesentium accusantium,
-                    unde necessitatibus quos molestias repellendus aut doloremque? Earum, iure ut ab rerum reprehenderit
-                    incidunt officiis vitae saepe quisquam impedit accusantium distinctio est inventore maxime facere
-                    provident debitis quia ipsum nihil </p>
+                <h4>Full Stack Developer</h4>
+                <p>Dynamic full-stack development intern, adept in front-end and back-end languages, including Python, basic data structures and algorithms, HTML, CSS, JavaScript, DOM, React, MongoDB, and Git. Successfully completed over 500+ unique real-world projects, showcasing strong problem-solving skills and collaborative teamwork. Poised to contribute technical prowess and innovation to dynamic project environments. </p>
             </div>
 
         </section>
@@ -196,54 +197,89 @@
 
                         <div class="layer">
                             <h4>Goo Business</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et veniam id, nihil temporibus
-                                ipsam
-                                nesciunt quibusdam, obcaecati rerum praesentium deleniti laborum saepe, quos libero
-                                veritatis delectus soluta deserunt atque non!</p>
+                            <p>I launched a dynamic business website in 2022 for my own business, offering seamless service ordering and tracking. I implemented advanced user and email tracking, alongside a secure OTP verification system. The admin panel provides comprehensive control, and the data downloading system supports Excel, CSV, and JSON formats.</p>
 
                         </div>
                         <div class="linksection">
-                            <a href="">GitHub</a>
-                            <a href="">Video</a>
-                            <a href="">Website</a>
+                            <a target="_blank" href="https://www.linkedin.com/posts/paritosh-barman-003257229_website-link-http13233106175-website-activity-7114608610235551744-IeZ5?utm_source=share&utm_medium=member_desktop">Video</a>
+                            <a target="_blank" href="https://goobusiness.autoimg.xyz">Website</a>
                         </div>
                     </div>
                     <div class="projectCard">
-                        <img src="Screenshot (17).png" alt="">
+                        <img src="AutoIMGScreenshot.jpeg" alt="">
 
                         <div class="layer">
                             <h4>AutoIMG</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et veniam id, nihil temporibus
-                                ipsam
-                                nesciunt quibusdam, obcaecati rerum praesentium deleniti laborum saepe, quos libero
-                                veritatis delectus soluta deserunt atque non!</p>
+                            <p>I developed a robust project using HTML, CSS, JavaScript, Python, and OpenCV. This automated tool effortlessly converts images into precise passport-sized photos, eliminating manual efforts. It goes beyond by intelligently removing backgrounds and enabling users to insert new ones, showcasing my prowess in web development and OpenCV integration.</p>
 
                         </div>
                         <div class="linksection">
-                            <a href="">GitHub</a>
-                            <a href="">Video</a>
-                            <a href="">Website</a>
+                            <a target="_blank" href="https://github.com/ParitoshBarman/autoimgProject">GitHub</a>
+                            <a target="_blank" href="https://www.linkedin.com/posts/paritosh-barman-003257229_7daylinkedinchallenge-prepleafbymasai-prepleaf-activity-7125579375038578690-6cu7?utm_source=share&utm_medium=member_desktop">Video</a>
+                            <a target="_blank" href="https://autoimg.xyz/">Website</a>
                         </div>
                     </div>
                     <div class="projectCard">
-                        <img src="Screenshot (17).png" alt="">
+                        <img src="Screenshot (19).png" alt="">
 
                         <div class="layer">
                             <h4>Traking Time</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et veniam id, nihil temporibus
-                                ipsam
-                                nesciunt quibusdam, obcaecati rerum praesentium deleniti laborum saepe, quos libero
-                                veritatis delectus soluta deserunt atque non!</p>
+                            <p>Introducing "TrackingTime," a project created with HTML, CSS, and basic JavaScript, focusing on design excellence. With responsive features, it seamlessly adapts to various devices. Incorporating animations and auto-changing images and some difference style for different screen. And I made this in the construction week project and submited on the time.</p>
 
                         </div>
                         <div class="linksection">
-                            <a href="">GitHub</a>
-                            <a href="">Video</a>
-                            <a href="">Website</a>
+                            <a target="_blank" href="https://github.com/ParitoshBarman/CW-Project">GitHub</a>
+                            <a target="_blank" href="https://www.linkedin.com/posts/paritosh-barman-003257229_webdevelopment-fullstackdeveloper-frontenddevelopment-activity-7128410552380354560-s0xK?utm_source=share&utm_medium=member_desktop">Video</a>
+                            <a target="_blank" href="https://precious-cassata-3f0134.netlify.app/">Website</a>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+
+        <section class="gitStats">
+            <h2 class="allH2Headind">Git <span class="underspan">Stats</span></h2>
+            <div class="gitStatsImages">
+                <div><img
+                        src="https://github-readme-streak-stats-salesp07.vercel.app/?user=ParitoshBarman&count_private=true&theme=react&border_radius=10"
+                        alt=""></div>
+                <div><img
+                        src="https://github-readme-stats-salesp07.vercel.app/api/top-langs/?username=ParitoshBarman&hide=HTML&langs_count=8&layout=compact&theme=react&border_radius=10&size_weight=0.5&count_weight=0.5&exclude_repo=github-readme-stats"
+                        alt=""></div>
+                <div><img
+                        src="https://github-readme-stats-salesp07.vercel.app/api?username=ParitoshBarman&count_private=true&show_icons=true&theme=react&rank_icon=github&border_radius=10"
+                        alt=""></div>
+            </div>
+
+        </section>
+
+
+        <section class="gitContribution">
+            <h2 class="allH2Headind">My Git <span class="underspan">Contribution</span></h2>
+            <div class="contributionSnak">
+                <img src="https://raw.githubusercontent.com/ParitoshBarman/ParitoshBarman/output/github-contribution-grid-snake.svg"
+                    alt="">
+            </div>
+
+        </section>
+
+        <section class="contact" id="contact">
+            <h2 class="allH2Headind">Contact <span class="underspan">Me</span></h2>
+            <div class="contactText">
+                <h3>Get in Touch</h3>
+                <div><a href="mailto:barmanpari163@gmail.com" target="_blank"><i class='bx bx-envelope'></i> barmanpari163@gmail.com</a></div>
+                <div><a href="https://wa.me/919091467852" target="_blank"><i class='bx bx-phone'></i> +91 9091467852</a></div>
+                <div><a href="https://www.linkedin.com/in/paritosh-barman-003257229" target="_blank"><i class='bx bxl-linkedin'></i> Paritosh Barman</a></div>
+                <div><a href="https://github.com/ParitoshBarman" target="_blank"><i class='bx bxl-github'></i> ParitoshBarman</a></div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="footer">
+            <h2><i class='bx bx-heart' style='color:#ff2900'></i> Thank You 😊 <i class='bx bx-heart'
+                    style='color:#ff2900'></i></h2>
         </section>
 
 

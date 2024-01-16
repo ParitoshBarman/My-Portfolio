@@ -1,0 +1,33 @@
+@media screen and (max-width:930px) {
+    .intro>div:nth-child(2){
+        display: none;
+    }
+    .intro>div:nth-child(1){
+        width: 100%;
+    }
+
+    .navbar{
+        display: none;
+        padding: 50px 62px 27px 10px;
+        border-radius: 5px;
+        position: absolute;
+        top: 9px;
+        right: 12px;
+        box-shadow: 1px 1px 20px #012290f7, 1px 1px 40px #0053b8f7;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+        gap: 40px;
+        background-color: rgb(8 27 41);
+
+    }
+    
+
+    .container{
+        display: block;
+        z-index: 10;
+    }
+
+
+}
+
