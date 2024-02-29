@@ -466,7 +466,7 @@ main>section {
 }
 
 .react span::after {
-    content: "30%";
+    content: "85%";
 }
 
 .python span::after {
