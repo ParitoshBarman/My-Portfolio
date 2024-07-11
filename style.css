@@ -428,7 +428,7 @@ main>section {
 }
 
 .react span {
-    width: 85%;
+    width: 90%;
 }
 
 .python span {
@@ -466,7 +466,7 @@ main>section {
 }
 
 .react span::after {
-    content: "85%";
+    content: "90%";
 }
 
 .python span::after {
