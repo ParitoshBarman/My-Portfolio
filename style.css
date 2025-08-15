@@ -102,6 +102,9 @@ main>section {
     display: flex;
     align-items: center;
     padding: 70px 10% 0;
+    background:
+        radial-gradient(80vw 80vh at 15% 15%, #232956 0%, var(--bg1) 50%),
+        radial-gradient(60vw 60vh at 90% 90%, #202652 0%, var(--bg2) 55%);
 }
 
 .intro>div {

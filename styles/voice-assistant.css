@@ -1,4 +1,4 @@
-.voice-assistant {
+:root {
     --bg1: #0f1226;
     --bg2: #1b1f3d;
     --glass: rgba(255, 255, 255, .08);
@@ -8,28 +8,43 @@
     --brand: #7c5cff;
     --accent: #00e6a7;
     --warn: #ff7b54;
-
-    font-family: Poppins, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    color: var(--text);
 }
 
-/* Voice Assistant Card */
-.voice-assistant .card {
+.voice-assistant * {
+    box-sizing: border-box
+}
+
+.voice-assistant {
+    min-height: 100vh;
+}
+
+.voice-assistant {
+    margin: 0;
+    font-family: Poppins, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    background:
+        radial-gradient(80vw 80vh at 15% 15%, #232956 0%, var(--bg1) 50%),
+        radial-gradient(60vw 60vh at 90% 90%, #202652 0%, var(--bg2) 55%);
+    color: var(--text);
+    display: grid;
+    place-items: center;
+    padding: 24px
+}
+
+ .voice-assistant .card {
     width: min(960px, 94vw);
     background: var(--glass);
     border: 1px solid var(--stroke);
     border-radius: 28px;
     backdrop-filter: blur(8px);
     box-shadow: 0 10px 40px rgba(0, 0, 0, .35);
-    padding: 24px;
-    margin: 0 auto;
+    padding: 24px
 }
 
 .voice-assistant .header {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 8px;
+    margin-bottom: 8px
 }
 
 .voice-assistant .dot {
@@ -37,18 +52,18 @@
     height: 10px;
     border-radius: 50%;
     background: var(--brand);
-    box-shadow: 0 0 18px var(--brand);
+    box-shadow: 0 0 18px var(--brand)
 }
 
 .voice-assistant h1 {
     font-size: 26px;
     line-height: 1.15;
-    margin: 0;
+    margin: 0
 }
 
 .voice-assistant p.sub {
     margin: 4px 0 14px;
-    color: var(--muted);
+    color: var(--muted)
 }
 
 .voice-assistant .display {
@@ -57,7 +72,7 @@
     border-radius: 16px;
     border: 1px dashed var(--stroke);
     background: rgba(255, 255, 255, .04);
-    color: #ffec99;
+    color: #ffec99
 }
 
 .voice-assistant .row {
@@ -65,7 +80,7 @@
     gap: 12px;
     flex-wrap: wrap;
     align-items: center;
-    margin-top: 12px;
+    margin-top: 12px
 }
 
 .voice-assistant button {
@@ -74,26 +89,26 @@
     border-radius: 16px;
     padding: 12px 18px;
     font-weight: 600;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .voice-assistant .btn {
     background: linear-gradient(135deg, var(--brand), #5b38ff);
     color: white;
-    box-shadow: 0 8px 20px rgba(124, 92, 255, .35);
+    box-shadow: 0 8px 20px rgba(124, 92, 255, .35)
 }
 
 .voice-assistant .btn.ghost {
     background: rgba(255, 255, 255, .08);
     color: var(--text);
-    border: 1px solid var(--stroke);
+    border: 1px solid var(--stroke)
 }
 
 .voice-assistant .status {
     margin-top: 8px;
     min-height: 22px;
     color: var(--muted);
-    font-size: 14px;
+    font-size: 14px
 }
 
 .voice-assistant .wave {
@@ -101,7 +116,7 @@
     margin: 14px 0 6px;
     display: flex;
     align-items: flex-end;
-    gap: 6px;
+    gap: 6px
 }
 
 .voice-assistant .bar {
@@ -110,36 +125,36 @@
     background: linear-gradient(180deg, var(--accent), var(--brand));
     height: 10px;
     opacity: .85;
-    animation: wave 1.05s ease-in-out infinite;
+    animation: wave 1.05s ease-in-out infinite
 }
 
 .voice-assistant .bar:nth-child(2) {
-    animation-delay: .08s;
+    animation-delay: .08s
 }
 
 .voice-assistant .bar:nth-child(3) {
-    animation-delay: .16s;
+    animation-delay: .16s
 }
 
 .voice-assistant .bar:nth-child(4) {
-    animation-delay: .24s;
+    animation-delay: .24s
 }
 
 .voice-assistant .bar:nth-child(5) {
-    animation-delay: .32s;
+    animation-delay: .32s
 }
 
 @keyframes wave {
     0% {
-        height: 8px;
+        height: 8px
     }
 
     50% {
-        height: 36px;
+        height: 36px
     }
 
     100% {
-        height: 8px;
+        height: 8px
     }
 }
 
@@ -159,13 +174,13 @@
     padding: 22px;
     border-radius: 20px;
     text-align: center;
-    max-width: 520px;
+    max-width: 520px
 }
 
 .voice-assistant .hint {
     font-size: 13px;
     color: var(--muted);
-    margin-top: 6px;
+    margin-top: 6px
 }
 
 .voice-assistant .pill {
@@ -176,29 +191,5 @@
     padding: 6px 10px;
     border-radius: 999px;
     color: var(--muted);
-    font-size: 12px;
-}
-
-
-
-@keyframes fadeInOut {
-    0% {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    10% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    90% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateY(10px);
-    }
+    font-size: 12px
 }
