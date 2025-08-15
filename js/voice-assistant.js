@@ -105,7 +105,8 @@ function routeIntent(utter) {
     }
     if (/(project|projects)/i.test(utter)) {
         if (/(how many|count|number)/i.test(utter)) {
-            speak(`I have built ${PROJECTS.length} projects. Do you want the list?`, () => listenOnce(say => {
+            // speak(`I have built ${PROJECTS.length} pluse projects. Do you want the list?`, () => listenOnce(say => {
+            speak(`I have built ${50} pluse projects. Do you want the list?`, () => listenOnce(say => {
                 if (/yes|yeah|sure|ok|okay/i.test(say)) listProjects(); else promptNext();
             }));
             return;
