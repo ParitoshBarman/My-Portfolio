@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paritosh • Voice Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg1: #0f1226;
+            --bg2: #1b1f3d;
+            --glass: rgba(255, 255, 255, .08);
+            --stroke: rgba(255, 255, 255, .14);
+            --text: #eef1ff;
+            --muted: #aeb4d6;
+            --brand: #7c5cff;
+            --accent: #00e6a7;
+            --warn: #ff7b54;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: Poppins, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            background:
+                radial-gradient(80vw 80vh at 15% 15%, #232956 0%, var(--bg1) 50%),
+                radial-gradient(60vw 60vh at 90% 90%, #202652 0%, var(--bg2) 55%);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            padding: 24px
+        }
+
+        .card {
+            width: min(960px, 94vw);
+            background: var(--glass);
+            border: 1px solid var(--stroke);
+            border-radius: 28px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, .35);
+            padding: 24px
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--brand);
+            box-shadow: 0 0 18px var(--brand)
+        }
+
+        h1 {
+            font-size: 26px;
+            line-height: 1.15;
+            margin: 0
+        }
+
+        p.sub {
+            margin: 4px 0 14px;
+            color: var(--muted)
+        }
+
+        .display {
+            min-height: 64px;
+            padding: 14px 16px;
+            border-radius: 16px;
+            border: 1px dashed var(--stroke);
+            background: rgba(255, 255, 255, .04);
+            color: #ffec99
+        }
+
+        .row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 12px
+        }
+
+        button {
+            appearance: none;
+            border: 0;
+            border-radius: 16px;
+            padding: 12px 18px;
+            font-weight: 600;
+            cursor: pointer
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--brand), #5b38ff);
+            color: white;
+            box-shadow: 0 8px 20px rgba(124, 92, 255, .35)
+        }
+
+        .btn.ghost {
+            background: rgba(255, 255, 255, .08);
+            color: var(--text);
+            border: 1px solid var(--stroke)
+        }
+
+        .status {
+            margin-top: 8px;
+            min-height: 22px;
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        .wave {
+            height: 42px;
+            margin: 14px 0 6px;
+            display: flex;
+            align-items: flex-end;
+            gap: 6px
+        }
+
+        .bar {
+            width: 6px;
+            border-radius: 6px;
+            background: linear-gradient(180deg, var(--accent), var(--brand));
+            height: 10px;
+            opacity: .85;
+            animation: wave 1.05s ease-in-out infinite
+        }
+
+        .bar:nth-child(2) {
+            animation-delay: .08s
+        }
+
+        .bar:nth-child(3) {
+            animation-delay: .16s
+        }
+
+        .bar:nth-child(4) {
+            animation-delay: .24s
+        }
+
+        .bar:nth-child(5) {
+            animation-delay: .32s
+        }
+
+        @keyframes wave {
+            0% {
+                height: 8px
+            }
+
+            50% {
+                height: 36px
+            }
+
+            100% {
+                height: 8px
+            }
+        }
+
+        /* Autoplay gate overlay */
+        .gate {
+            position: fixed;
+            inset: 0;
+            display: none;
+            place-items: center;
+            background: rgba(11, 13, 28, .72);
+            backdrop-filter: blur(4px);
+        }
+
+        .gate .panel {
+            background: var(--glass);
+            border: 1px solid var(--stroke);
+            padding: 22px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 520px
+        }
+
+        .hint {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 6px
+        }
+
+        .pill {
+            display: inline-flex;
+            gap: 6px;
+            align-items: center;
+            border: 1px solid var(--stroke);
+            padding: 6px 10px;
+            border-radius: 999px;
+            color: var(--muted);
+            font-size: 12px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <header>
+            <span class="dot"></span>
+            <h1>🎙 Paritosh Barman • Voice Portfolio Assistant</h1>
+        </header>
+        <p class="sub">Autoplays a male voice intro, then you can ask about <strong>me</strong>, my
+            <strong>skills</strong>, or my <strong>projects</strong>.</p>
+
+        <div class="display" id="caption">Loading voice…</div>
+
+        <div class="wave" id="viz" style="visibility:hidden">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <div class="row">
+            <button class="btn" id="restart">▶ Replay Intro</button>
+            <button class="btn ghost" id="ask">🎤 Ask Something</button>
+            <span class="pill" id="voiceName">voice: <em
+                    style="font-style:normal;margin-left:4px">detecting…</em></span>
+        </div>
+        <div class="status" id="status"></div>
+    </div>
+
+    <!-- Autoplay fallback overlay -->
+    <div class="gate" id="gate">
+        <div class="panel">
+            <h2>🔊 Enable Audio</h2>
+            <p>Browsers sometimes block autoplay with speech. Click below to start.</p>
+            <button class="btn" id="unlock">Start Voice</button>
+            <div class="hint">Tip: Use Chrome desktop/mobile for best voice + mic support.</div>
+        </div>
+    </div>
+
+    <script>
+        // ====== Content you can customize ======
+        const INTRO = "Hi, I'm Paritosh Barman. I'm a MERN stack developer who loves building interactive web apps, crafting clean APIs, and solving DSA problems.";
+        const PROMPT = "Would you like to know more about me, hear my skills, or learn about my projects? You can also say: how many projects have I built.";
+
+        const ABOUT = "About me: I enjoy full‑stack development with React, Node, Express, and MongoDB. I like clean UI, accessible design, and robust backend architecture.";
+        const SKILLS = "My core skills include HTML, CSS, JavaScript, React, Redux, Node, Express, MongoDB, REST APIs, authentication, and deployment with Docker and cloud.";
+
+        const PROJECTS = [
+            { id: 1, name: "Daily Planner", short: "Task manager with search debounce and persistent storage.", detail: "A daily planner web app with task CRUD, debounce search, local persistence, and optional scroll‑to‑top and category filters. Built with React and modern hooks." },
+            { id: 2, name: "MERN Notes App", short: "Secure notes with auth and CRUD.", detail: "A MERN stack app featuring JWT auth, role‑based access, and notes management. Chakra UI v3 on the frontend, Express + MongoDB on the backend." },
+            { id: 3, name: "Product Store", short: "Catalog with sorting, filtering, and details.", detail: "A React storefront consuming the DummyJSON API with pagination, filters, and a product detail page. Emphasis on reusable components and state management." }
+        ];
+
+        // ====== Voice + STT plumbing (no backend) ======
+        const synth = window.speechSynthesis;
+        let recog; // webkitSpeechRecognition instance
+        let maleVoice = null;
+        let voicesReady = false;
+
+        function pickMaleVoice() {
+            const voices = synth.getVoices();
+            // Try explicit male names, or best English fallback
+            maleVoice = voices.find(v => /male/i.test(v.name))
+                || voices.find(v => /(David|Mark|Alex|John|George|Matthew|Guy|Daniel)/i.test(v.name))
+                || voices.find(v => /English/i.test(v.lang))
+                || voices[0] || null;
+            document.querySelector('#voiceName em').textContent = maleVoice ? maleVoice.name : 'default';
+        }
+
+        function speak(text, cb) {
+            if (!text) return cb && cb();
+            const u = new SpeechSynthesisUtterance(text);
+            if (maleVoice) u.voice = maleVoice;
+            u.rate = 1; u.pitch = 1; u.volume = 1;
+            u.onstart = () => setCaption(text);
+            u.onend = () => cb && cb();
+            synth.cancel(); // stop anything pending before speaking fresh
+            synth.speak(u);
+        }
+
+        function setCaption(t) {
+            document.getElementById('caption').textContent = t;
+        }
+
+        function setStatus(t) {
+            document.getElementById('status').textContent = t || '';
+        }
+
+        function showViz(on) {
+            document.getElementById('viz').style.visibility = on ? 'visible' : 'hidden';
+        }
+
+        function ensureRecognition() {
+            if (!('webkitSpeechRecognition' in window)) {
+                setStatus('Speech recognition not supported in this browser.');
+                return null;
+            }
+            const r = new webkitSpeechRecognition();
+            r.lang = 'en-US';
+            r.continuous = false; r.interimResults = false;
+            r.maxAlternatives = 1;
+            return r;
+        }
+
+        function listenOnce(onResult) {
+            const r = ensureRecognition();
+            if (!r) return;
+            recog = r;
+            showViz(true);
+            setCaption('Listening… you can say: about me, skills, projects, how many projects, or project name.');
+            r.onresult = (e) => {
+                showViz(false);
+                const said = e.results[0][0].transcript.toLowerCase();
+                setStatus('You said: "' + said + '"');
+                onResult(said);
+            };
+            r.onerror = (e) => { showViz(false); setStatus('Mic error: ' + (e.error || 'unknown')); speak("Sorry, I couldn't hear that.", promptNext); };
+            r.onend = () => { showViz(false); /* if ended with no result, we can reprompt */ };
+            r.start();
+        }
+
+        // ====== Dialogue management ======
+        function promptNext() {
+            speak(PROMPT, () => listenOnce(routeIntent));
+        }
+
+        function startIntro() {
+            // Intro → options
+            speak(INTRO, () => speak(PROMPT, () => listenOnce(routeIntent)));
+        }
+
+        function routeIntent(utter) {
+            // Basic routing by keywords
+            if (/(about|yourself|who are you|more about)/i.test(utter)) {
+                speak(ABOUT, promptNext);
+                return;
+            }
+            if (/(skill|skills|tech|stack|technology)/i.test(utter)) {
+                speak(SKILLS, promptNext);
+                return;
+            }
+            if (/(project|projects)/i.test(utter)) {
+                if (/(how many|count|number)/i.test(utter)) {
+                    speak(`I have built ${PROJECTS.length} projects. Do you want the list?`, () => listenOnce(say => {
+                        if (/yes|yeah|sure|ok|okay/i.test(say)) listProjects(); else promptNext();
+                    }));
+                    return;
+                }
+                // If user mentions a project by name or number
+                const idx = parseProjectIndex(utter);
+                if (idx !== -1) {
+                    speakProjectDetail(idx);
+                    return;
+                }
+                // Otherwise give the list first
+                listProjects();
+                return;
+            }
+            if (/(repeat|again|replay|intro)/i.test(utter)) {
+                startIntro();
+                return;
+            }
+            // If user says a known project name directly
+            const idx2 = parseProjectIndex(utter);
+            if (idx2 !== -1) { speakProjectDetail(idx2); return; }
+
+            // Fallback
+            speak("Sorry, I didn't catch that. You can say: about me, skills, projects, or a project name like Daily Planner.", promptNext);
+        }
+
+        function listProjects() {
+            const names = PROJECTS.map(p => p.name).join(', ');
+            speak(`Here are my projects: ${names}. You can say a project name to hear more.`, () => listenOnce(utter => {
+                const i = parseProjectIndex(utter);
+                if (i !== -1) speakProjectDetail(i); else promptNext();
+            }));
+        }
+
+        function speakProjectDetail(i) {
+            const p = PROJECTS[i];
+            const lines = `${p.name}. ${p.short} ${p.detail}`;
+            speak(lines, promptNext);
+        }
+
+        function parseProjectIndex(utter) {
+            // by explicit name
+            let i = PROJECTS.findIndex(p => utter.includes(p.name.toLowerCase()));
+            if (i !== -1) return i;
+            // by ordinal/number
+            if (/(first|one|1)/i.test(utter)) return 0;
+            if (/(second|two|2)/i.test(utter)) return Math.min(1, PROJECTS.length - 1);
+            if (/(third|three|3)/i.test(utter)) return Math.min(2, PROJECTS.length - 1);
+            return -1;
+        }
+
+        // ====== Autoplay handling ======
+        function tryAutoplay() {
+            // Some browsers require a user gesture; we attempt once, else show gate
+            if (!voicesReady) { pickMaleVoice(); }
+            // If speech is blocked, speaking may be ignored; we detect by timeout
+            let started = false;
+            const origSpeak = synth.speak;
+            // just attempt to speak intro; if after 800ms nothing spoke, show gate
+            const u = new SpeechSynthesisUtterance(''); // flush
+            synth.speak(u);
+            setTimeout(() => {
+                // try real intro
+                const check = new SpeechSynthesisUtterance('');
+                check.onstart = () => started = true;
+                synth.speak(check);
+                setTimeout(() => {
+                    if (!started) {
+                        document.getElementById('gate').style.display = 'grid';
+                    } else {
+                        startIntro();
+                    }
+                }, 400);
+            }, 200);
+        }
+
+        // ====== Wiring ======
+        // Voices can load asynchronously
+        speechSynthesis.onvoiceschanged = () => { voicesReady = true; pickMaleVoice(); };
+
+        // UI buttons
+        document.getElementById('restart').addEventListener('click', () => startIntro());
+
+        document.getElementById('ask').addEventListener('click', () => listenOnce(routeIntent));
+
+        document.getElementById('unlock').addEventListener('click', () => {
+            document.getElementById('gate').style.display = 'none';
+            startIntro();
+        });
+
+        // Start automatically when DOM is ready
+        window.addEventListener('DOMContentLoaded', () => {
+            setCaption('Initializing voice…');
+            // Give voices a moment to populate then attempt autoplay
+            setTimeout(tryAutoplay, 350);
+        });
+    </script>
+</body>
+
+</html>

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
     <link rel="stylesheet" href="./styles/toast.css">
+    <link rel="stylesheet" href="./styles/voice-assistant.css">
     <style>
         .tech-stack {
             margin-top: 10px;
@@ -580,22 +581,50 @@
     </main>
 
 
-    <!-- Voice Assistant UI -->
-    <div class="voice-assistant-card" id="voice-assistant">
-        <div class="voice-header">
-            <h2>Voice Assistant</h2>
-            <p>Your interactive portfolio guide</p>
+    <div class="voice-assistant">
+
+        <div class="card">
+            <div class="header">
+                <span class="dot"></span>
+                <h1>🎙 Paritosh Barman • Voice Portfolio Assistant</h1>
+            </div>
+            <p class="sub">Autoplays a male voice intro, then you can ask about <strong>me</strong>, my
+                <strong>skills</strong>, or my <strong>projects</strong>.
+            </p>
+
+            <div class="display" id="caption">Loading voice…</div>
+
+            <div class="wave" id="viz" style="visibility:hidden">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
+            <div class="row">
+                <button class="btn" id="restart">▶ Replay Intro</button>
+                <button class="btn ghost" id="ask">🎤 Ask Something</button>
+                <span class="pill" id="voiceName">voice: <em
+                        style="font-style:normal;margin-left:4px">detecting…</em></span>
+            </div>
+            <div class="status" id="status"></div>
         </div>
-        <div class="voice-controls">
-            <button id="start-voice">🎙️ Start Voice</button>
-            <button id="replay-intro">🔄 Replay Intro</button>
-            <button id="ask-question">❓ Ask Something</button>
+
+        <!-- Autoplay fallback overlay -->
+        <div class="gate" id="gate">
+            <div class="panel">
+                <h2>🔊 Enable Audio</h2>
+                <p>Browsers sometimes block autoplay with speech. Click below to start.</p>
+                <button class="btn" id="unlock">Start Voice</button>
+                <div class="hint">Tip: Use Chrome desktop/mobile for best voice + mic support.</div>
+            </div>
         </div>
+
     </div>
 
     <!-- Toast Container -->
     <div id="toast-container"></div>
-
 
 
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
