@@ -1,15 +1,19 @@
-// ====== Content you can customize ======
-const INTRO = "Hi, I'm Paritosh Barman. I'm a MERN stack developer who loves building interactive web apps, crafting clean APIs, and solving DSA problems.";
-const PROMPT = "Would you like to know more about me, hear my skills, or learn about my projects? You can also say: how many projects have I built.";
+const INTRO = "Hi, I'm Paritosh Barman — an accomplished Full Stack Developer specializing in the MERN stack. I've built over 500 projects across web, Python, and IoT, with a strong focus on clean, efficient, and scalable solutions. My work spans real-time tracking apps, civic engagement platforms, medical systems, and more.";
 
-const ABOUT = "About me: I enjoy full‑stack development with React, Node, Express, and MongoDB. I like clean UI, accessible design, and robust backend architecture.";
-const SKILLS = "My core skills include HTML, CSS, JavaScript, React, Redux, Node, Express, MongoDB, REST APIs, authentication, and deployment with Docker and cloud.";
+const PROMPT = "Would you like to know more about me, hear my skills, or learn about my projects? You can also ask how many projects I have built.";
+
+const ABOUT = "About me: I am a passionate developer who loves building dynamic, interactive applications that solve real problems. My expertise includes the MERN stack — MongoDB, Express, React, and Node.js — as well as Django for backend services. I've developed production-ready solutions like a Smart Field Manager for real-time executive tracking, a Local Democracy Platform with real-time voting, and other custom applications including learning management systems and inventory platforms. My goal is to lead impactful projects, mentor other developers, and contribute to products that improve daily life. I value adaptability, problem-solving, and creating user experiences that feel seamless.";
+
+const SKILLS = "My technical skills include HTML5, CSS3, JavaScript, React, Redux, Node.js, Express, MongoDB, REST APIs, JWT authentication, responsive web design, Docker deployment, and cloud hosting. I also have experience with Python, Django, Leaflet maps, Socket.IO, and third-party API integrations. My soft skills include adaptability, time management, teamwork, and strong problem-solving.";
 
 const PROJECTS = [
-    { id: 1, name: "Daily Planner", short: "Task manager with search debounce and persistent storage.", detail: "A daily planner web app with task CRUD, debounce search, local persistence, and optional scroll‑to‑top and category filters. Built with React and modern hooks." },
-    { id: 2, name: "MERN Notes App", short: "Secure notes with auth and CRUD.", detail: "A MERN stack app featuring JWT auth, role‑based access, and notes management. Chakra UI v3 on the frontend, Express + MongoDB on the backend." },
-    { id: 3, name: "Product Store", short: "Catalog with sorting, filtering, and details.", detail: "A React storefront consuming the DummyJSON API with pagination, filters, and a product detail page. Emphasis on reusable components and state management." }
+    { id: 1, name: "Smart Field Manager", short: "B2B web app for real-time executive tracking.", detail: "Built with React.js, Vite, Node.js, Express.js, and MongoDB. Features include JWT role-based access control, Leaflet maps for live location tracking, file uploads, and direct communication tools like calls and WhatsApp messaging." },
+    { id: 2, name: "Local Democracy Platform", short: "Full-stack civic engagement platform with real-time voting.", detail: "Developed with React, Redux Toolkit, Chakra UI, Node.js, Express.js, and MongoDB. Includes JWT authentication, role-based dashboards, real-time Socket.IO updates, and a fully responsive, accessible UI." },
+    { id: 3, name: "MERN Notes App", short: "Secure notes app with authentication and CRUD.", detail: "MERN stack application featuring JWT auth, role-based access, and notes management. Frontend built with Chakra UI v3, backend powered by Express and MongoDB." },
+    { id: 4, name: "Daily Planner", short: "Task manager with search debounce and persistent storage.", detail: "React-based planner app with task CRUD, debounce search, local persistence, and optional scroll-to-top and category filters." },
+    { id: 5, name: "Product Store", short: "E-commerce style product catalog.", detail: "React storefront consuming DummyJSON API with pagination, filters, and detailed product pages, focusing on reusable components and state management." }
 ];
+
 
 // ====== Voice + STT plumbing (no backend) ======
 const synth = window.speechSynthesis;
