@@ -152,7 +152,10 @@ function pickMaleVoice() {
 
     // 1️⃣ Try to pick a known male voice
     maleVoice =
+        voices.find(v => /(Ravi|Male)/i.test(v.name)) ||
+        voices.find(v => /\bMale\b/i.test(v.name)) ||
         voices.find(v => /(David|Mark|Alex|John|George|Matthew|Guy|Daniel|James|Paul|Mike|Sam)/i.test(v.name)) ||
+        voices.find(v => /(India)/i.test(v.name)) ||
         voices.find(v => /Google US English/i.test(v.name)) ||
         voices.find(v => /English/i.test(v.lang)) ||
         voices[0] || null;
@@ -179,6 +182,7 @@ function speak(text, cb) {
     const u = new SpeechSynthesisUtterance(text);
 
     // ✅ Force voice
+    console.log('Hellooooooo', maleVoice)
     if (maleVoice) {
         u.voice = maleVoice;
     }
