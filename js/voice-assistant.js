@@ -66,85 +66,87 @@ async function queryBackend(userText) {
     }
 }
 
-// // ====== Voice + STT ======
-// const synth = window.speechSynthesis;
-// let recog;
-// let maleVoice = null;
-// let voicesReady = false;
-
-// function pickMaleVoice() {
-//     const voices = synth.getVoices();
-//     maleVoice = voices.find(v => /male/i.test(v.name))
-//         || voices.find(v => /(David|Mark|Alex|John|George|Matthew|Guy|Daniel)/i.test(v.name))
-//         || voices.find(v => /English/i.test(v.lang))
-//         || voices[0] || null;
-//     document.querySelector('#voiceName em').textContent = maleVoice ? maleVoice.name : 'default';
-// }
-
-// function speak(text, cb) {
-//     if (!text) return cb && cb();
-//     const u = new SpeechSynthesisUtterance(text);
-//     if (maleVoice) u.voice = maleVoice;
-//     u.rate = 1; u.pitch = 1; u.volume = 1;
-//     u.onstart = () => {
-//         updateAIStatus("Speaking...");
-//         setCaption(text);
-//     }
-//     u.onend = () => cb && cb();
-//     synth.cancel();
-//     synth.speak(u);
-// }
-
 // ====== Voice + STT ======
 const synth = window.speechSynthesis;
 let recog;
 let maleVoice = null;
+let voicesReady = false;
 
-// ✅ Load voices properly
 function pickMaleVoice() {
     const voices = synth.getVoices();
-    console.log("Available voices:", voices);
-
-    maleVoice =
+    maleVoice = voices.find(v => /male/i.test(v.name)) ||
         voices.find(v => /male/i.test(v.name)) ||
         voices.find(v => /(Ravi|Male)/i.test(v.name)) ||
         voices.find(v => /\bMale\b/i.test(v.name)) ||
-        voices.find(v => /(David|Mark|Alex|John|George|Matthew|Guy|Daniel|James|Paul)/i.test(v.name)) ||
-        voices.find(v => v.lang === "en-US" && /Google US English/i.test(v.name)) ||
-        voices.find(v => /English/i.test(v.lang)) ||
-        voices[0] || null;
-
-    if (document.querySelector('#voiceName em')) {
-        document.querySelector('#voiceName em').textContent = maleVoice
-            ? maleVoice.name
-            : "default";
-    }
+        voices.find(v => /(David|Mark|Alex|John|George|Matthew|Guy|Daniel)/i.test(v.name))
+        || voices.find(v => /English/i.test(v.lang))
+        || voices[0] || null;
+    document.querySelector('#voiceName em').textContent = maleVoice ? maleVoice.name : 'default';
 }
 
-// ✅ Run once voices are available
-synth.onvoiceschanged = pickMaleVoice;
-
-// ====== Speak function ======
 function speak(text, cb) {
     if (!text) return cb && cb();
-
     const u = new SpeechSynthesisUtterance(text);
-    console.log(maleVoice)
     if (maleVoice) u.voice = maleVoice;
-
-    u.rate = 1;
-    u.pitch = 0.6;   // ⚡ lower pitch for more "male" tone
-    u.volume = 1;
-
+    u.rate = 1; u.pitch = 0.6; u.volume = 1;
     u.onstart = () => {
         updateAIStatus("Speaking...");
         setCaption(text);
-    };
+    }
     u.onend = () => cb && cb();
-
-    synth.cancel(); // stop any ongoing speech
+    synth.cancel();
     synth.speak(u);
 }
+
+// // ====== Voice + STT ======
+// const synth = window.speechSynthesis;
+// let recog;
+// let maleVoice = null;
+
+// // ✅ Load voices properly
+// function pickMaleVoice() {
+//     const voices = synth.getVoices();
+//     console.log("Available voices:", voices);
+
+//     maleVoice =
+//         voices.find(v => /male/i.test(v.name)) ||
+//         voices.find(v => /(Ravi|Male)/i.test(v.name)) ||
+//         voices.find(v => /\bMale\b/i.test(v.name)) ||
+//         voices.find(v => /(David|Mark|Alex|John|George|Matthew|Guy|Daniel|James|Paul)/i.test(v.name)) ||
+//         voices.find(v => v.lang === "en-US" && /Google US English/i.test(v.name)) ||
+//         voices.find(v => /English/i.test(v.lang)) ||
+//         voices[0] || null;
+
+//     if (document.querySelector('#voiceName em')) {
+//         document.querySelector('#voiceName em').textContent = maleVoice
+//             ? maleVoice.name
+//             : "default";
+//     }
+// }
+
+// // ✅ Run once voices are available
+// synth.onvoiceschanged = pickMaleVoice;
+
+// // ====== Speak function ======
+// function speak(text, cb) {
+//     if (!text) return cb && cb();
+
+//     const u = new SpeechSynthesisUtterance(text);
+//     if (maleVoice) u.voice = maleVoice;
+
+//     u.rate = 1;
+//     u.pitch = 0.6;   // ⚡ lower pitch for more "male" tone
+//     u.volume = 1;
+
+//     u.onstart = () => {
+//         updateAIStatus("Speaking...");
+//         setCaption(text);
+//     };
+//     u.onend = () => cb && cb();
+
+//     synth.cancel(); // stop any ongoing speech
+//     synth.speak(u);
+// }
 
 
 // const synth = window.speechSynthesis;
