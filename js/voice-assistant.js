@@ -33,8 +33,8 @@ async function queryBackend(userText) {
     setCaption("Processing your request…");
 
     try {
-        // const res = await fetch("https://ai-backend-by-paritosh-barman.onrender.com/chat", {
-        const res = await fetch("http://localhost:5000/chat", {
+        const res = await fetch("https://ai-backend-by-paritosh-barman.onrender.com/chat", {
+            // const res = await fetch("http://localhost:5000/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -95,76 +95,24 @@ async function queryBackend(userText) {
 //     synth.speak(u);
 // }
 
-// // ====== Voice + STT ======
-// const synth = window.speechSynthesis;
-// let recog;
-// let maleVoice = null;
-
-// // ✅ Load voices properly
-// function pickMaleVoice() {
-//     const voices = synth.getVoices();
-//     console.log("Available voices:", voices);
-
-//     maleVoice =
-//         voices.find(v => /male/i.test(v.name)) ||
-//         voices.find(v => /(David|Mark|Alex|John|George|Matthew|Guy|Daniel|James|Paul)/i.test(v.name)) ||
-//         voices.find(v => v.lang === "en-US" && /Google US English/i.test(v.name)) ||
-//         voices[0] || null;
-
-//     if (document.querySelector('#voiceName em')) {
-//         document.querySelector('#voiceName em').textContent = maleVoice
-//             ? maleVoice.name
-//             : "default";
-//     }
-// }
-
-// // ✅ Run once voices are available
-// synth.onvoiceschanged = pickMaleVoice;
-
-// // ====== Speak function ======
-// function speak(text, cb) {
-//     if (!text) return cb && cb();
-
-//     const u = new SpeechSynthesisUtterance(text);
-//     if (maleVoice) u.voice = maleVoice;
-
-//     u.rate = 1;
-//     u.pitch = 0.8;   // ⚡ lower pitch for more "male" tone
-//     u.volume = 1;
-
-//     u.onstart = () => {
-//         updateAIStatus("Speaking...");
-//         setCaption(text);
-//     };
-//     u.onend = () => cb && cb();
-
-//     synth.cancel(); // stop any ongoing speech
-//     synth.speak(u);
-// }
-
-
+// ====== Voice + STT ======
 const synth = window.speechSynthesis;
+let recog;
 let maleVoice = null;
 
+// ✅ Load voices properly
 function pickMaleVoice() {
     const voices = synth.getVoices();
-    console.log("Available voices:", voices.map(v => v.name));
+    console.log("Available voices:", voices);
 
-    // 1️⃣ Try to pick a known male voice
     maleVoice =
+        voices.find(v => /male/i.test(v.name)) ||
         voices.find(v => /(Ravi|Male)/i.test(v.name)) ||
         voices.find(v => /\bMale\b/i.test(v.name)) ||
-        voices.find(v => /(David|Mark|Alex|John|George|Matthew|Guy|Daniel|James|Paul|Mike|Sam)/i.test(v.name)) ||
-        voices.find(v => /(India)/i.test(v.name)) ||
-        voices.find(v => /Google US English/i.test(v.name)) ||
+        voices.find(v => /(David|Mark|Alex|John|George|Matthew|Guy|Daniel|James|Paul)/i.test(v.name)) ||
+        voices.find(v => v.lang === "en-US" && /Google US English/i.test(v.name)) ||
         voices.find(v => /English/i.test(v.lang)) ||
         voices[0] || null;
-
-    if (maleVoice) {
-        console.log("✅ Selected voice:", maleVoice.name);
-    } else {
-        console.warn("⚠ No male voice found, using default voice.");
-    }
 
     if (document.querySelector('#voiceName em')) {
         document.querySelector('#voiceName em').textContent = maleVoice
@@ -173,23 +121,19 @@ function pickMaleVoice() {
     }
 }
 
-// Wait until voices are loaded
+// ✅ Run once voices are available
 synth.onvoiceschanged = pickMaleVoice;
 
+// ====== Speak function ======
 function speak(text, cb) {
     if (!text) return cb && cb();
 
     const u = new SpeechSynthesisUtterance(text);
+    console.log(maleVoice)
+    if (maleVoice) u.voice = maleVoice;
 
-    // ✅ Force voice
-    console.log('Hellooooooo', maleVoice)
-    if (maleVoice) {
-        u.voice = maleVoice;
-    }
-
-    // ✅ Adjust pitch/rate for male tone
     u.rate = 1;
-    u.pitch = 1;  // lower pitch → deeper male-like
+    u.pitch = 0.6;   // ⚡ lower pitch for more "male" tone
     u.volume = 1;
 
     u.onstart = () => {
@@ -198,9 +142,69 @@ function speak(text, cb) {
     };
     u.onend = () => cb && cb();
 
-    synth.cancel();
+    synth.cancel(); // stop any ongoing speech
     synth.speak(u);
 }
+
+
+// const synth = window.speechSynthesis;
+// let maleVoice = null;
+
+// function pickMaleVoice() {
+//     const voices = synth.getVoices();
+//     console.log("Available voices:", voices.map(v => v.name));
+
+//     // 1️⃣ Try to pick a known male voice
+//     maleVoice =
+//         voices.find(v => /(Ravi|Male)/i.test(v.name)) ||
+//         voices.find(v => /\bMale\b/i.test(v.name)) ||
+//         voices.find(v => /(David|Mark|Alex|John|George|Matthew|Guy|Daniel|James|Paul|Mike|Sam)/i.test(v.name)) ||
+//         voices.find(v => /(India)/i.test(v.name)) ||
+//         voices.find(v => /Google US English/i.test(v.name)) ||
+//         voices.find(v => /English/i.test(v.lang)) ||
+//         voices[0] || null;
+
+//     if (maleVoice) {
+//         console.log("✅ Selected voice:", maleVoice.name);
+//     } else {
+//         console.warn("⚠ No male voice found, using default voice.");
+//     }
+
+//     if (document.querySelector('#voiceName em')) {
+//         document.querySelector('#voiceName em').textContent = maleVoice
+//             ? maleVoice.name
+//             : "default";
+//     }
+// }
+
+// // Wait until voices are loaded
+// synth.onvoiceschanged = pickMaleVoice;
+
+// function speak(text, cb) {
+//     if (!text) return cb && cb();
+
+//     const u = new SpeechSynthesisUtterance(text);
+
+//     // ✅ Force voice
+//     console.log('Hellooooooo', maleVoice)
+//     if (maleVoice) {
+//         u.voice = maleVoice;
+//     }
+
+//     // ✅ Adjust pitch/rate for male tone
+//     u.rate = 1;
+//     u.pitch = 1;  // lower pitch → deeper male-like
+//     u.volume = 1;
+
+//     u.onstart = () => {
+//         updateAIStatus("Speaking...");
+//         setCaption(text);
+//     };
+//     u.onend = () => cb && cb();
+
+//     synth.cancel();
+//     synth.speak(u);
+// }
 
 
 
