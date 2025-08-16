@@ -30,7 +30,7 @@
     padding: 24px
 }
 
- .voice-assistant .card {
+.voice-assistant .card {
     width: min(960px, 94vw);
     background: var(--glass);
     border: 1px solid var(--stroke);
@@ -192,4 +192,57 @@
     border-radius: 999px;
     color: var(--muted);
     font-size: 12px
+}
+
+
+
+
+/* Floating AI Button */
+.ai-float-btn {
+    position: fixed;
+    top: 150px;
+    right: 20px;
+    background: var(--glass);
+    color: var(--text);
+    border: 1px solid var(--stroke);
+    border-radius: 30px;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 2000;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .35);
+}
+
+.ai-float-btn i {
+    font-size: 18px;
+    color: var(--accent);
+    transition: transform 0.3s ease;
+}
+
+.ai-float-btn:hover {
+    background: linear-gradient(135deg, var(--brand), #5b38ff);
+    color: #fff;
+}
+
+.ai-float-btn:hover i {
+    color: #fff;
+    transform: translateY(2px);
+}
+
+.ai-float-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Arrow styling */
+.ai-float-btn .arrow {
+    font-size: 20px;
+    color: var(--muted);
 }

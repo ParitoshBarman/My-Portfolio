@@ -45,6 +45,7 @@
             <a href="#SkillsOverview" style="--i:3">Skill</a>
             <a href="#projects" style="--i:4">Project</a>
             <a href="#contact" style="--i:5">Contact</a>
+            <a href="#voice-assistant" style="--i:6">AI Assistant</a>
         </nav>
         <div class="container" onclick="myFunction(this)">
             <div class="bar1"></div>
@@ -555,6 +556,52 @@
 
         </section>
 
+
+
+        <div class="voice-assistant" id="voice-assistant" style="margin-top: 100px;">
+
+
+            <div class="card">
+                <div class="header">
+                    <span class="dot"></span>
+                    <h1>🎙 Paritosh Barman • Voice Portfolio Assistant</h1>
+                </div>
+                <p class="sub">Autoplays a male voice intro, then you can ask about <strong>me</strong>, my
+                    <strong>skills</strong>, or my <strong>projects</strong>.
+                </p>
+
+                <div class="display" id="caption">Loading voice…</div>
+
+                <div class="wave" id="viz" style="visibility:hidden">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+
+                <div class="row">
+                    <button class="btn" id="restart">▶ Replay Intro</button>
+                    <button class="btn ghost" id="ask">🎤 Ask Something</button>
+                    <span class="pill" id="voiceName">voice: <em
+                            style="font-style:normal;margin-left:4px">detecting…</em></span>
+                </div>
+                <div class="status" id="status"></div>
+            </div>
+
+            <!-- Autoplay fallback overlay -->
+            <div class="gate" id="gate">
+                <div class="panel">
+                    <h2>🔊 Enable Audio</h2>
+                    <p>Browsers sometimes block autoplay with speech. Click below to start.</p>
+                    <button class="btn" id="unlock">Start Voice</button>
+                    <div class="hint">Tip: Use Chrome desktop/mobile for best voice + mic support.</div>
+                </div>
+            </div>
+
+        </div>
+
+
         <section class="contact" id="contact">
             <h2 class="allH2Headind">Contact <span class="underspan">Me</span></h2>
             <div class="contactText">
@@ -581,51 +628,17 @@
     </main>
 
 
-    <div class="voice-assistant">
-        
-
-        <div class="card">
-            <div class="header">
-                <span class="dot"></span>
-                <h1>🎙 Paritosh Barman • Voice Portfolio Assistant</h1>
-            </div>
-            <p class="sub">Autoplays a male voice intro, then you can ask about <strong>me</strong>, my
-                <strong>skills</strong>, or my <strong>projects</strong>.
-            </p>
-
-            <div class="display" id="caption">Loading voice…</div>
-
-            <div class="wave" id="viz" style="visibility:hidden">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-
-            <div class="row">
-                <button class="btn" id="restart">▶ Replay Intro</button>
-                <button class="btn ghost" id="ask">🎤 Ask Something</button>
-                <span class="pill" id="voiceName">voice: <em
-                        style="font-style:normal;margin-left:4px">detecting…</em></span>
-            </div>
-            <div class="status" id="status"></div>
-        </div>
-
-        <!-- Autoplay fallback overlay -->
-        <div class="gate" id="gate">
-            <div class="panel">
-                <h2>🔊 Enable Audio</h2>
-                <p>Browsers sometimes block autoplay with speech. Click below to start.</p>
-                <button class="btn" id="unlock">Start Voice</button>
-                <div class="hint">Tip: Use Chrome desktop/mobile for best voice + mic support.</div>
-            </div>
-        </div>
-
-    </div>
 
     <!-- Toast Container -->
     <div id="toast-container"></div>
+
+    <!-- Floating AI Assistant Button -->
+    <a id="ai-float-btn" class="ai-float-btn" href="#voice-assistant">
+        <i class='bx bxs-bot'></i>
+        <span id="ai-status">Idle</span>
+        <i class='bx bx-down-arrow-alt arrow'></i>
+    </a>
+
 
 
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>

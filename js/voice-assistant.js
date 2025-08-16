@@ -1,3 +1,20 @@
+const aiBtn = document.getElementById("ai-float-btn");
+const aiStatus = document.getElementById("ai-status");
+const voiceSection = document.getElementById("voice-assistant");
+
+// ====== Status update function ======
+// Call this from your voice assistant JS
+function updateAIStatus(state) {
+    aiStatus.textContent = state; // "Speaking", "Listening", "Idle"
+}
+
+// Example usage in your voice assistant flow:
+// updateAIStatus("Listening...");
+// updateAIStatus("Speaking...");
+// updateAIStatus("Idle");
+
+
+
 const INTRO = "Hi, I'm Paritosh Barman — an accomplished Full Stack Developer specializing in the MERN stack. I've built over 500 projects across web, Python, and IoT, with a strong focus on clean, efficient, and scalable solutions. My work spans real-time tracking apps, civic engagement platforms, medical systems, and more.";
 
 const PROMPT = "Would you like to know more about me, hear my skills, or learn about my projects? You can also ask how many projects I have built.";
@@ -36,7 +53,10 @@ function speak(text, cb) {
     const u = new SpeechSynthesisUtterance(text);
     if (maleVoice) u.voice = maleVoice;
     u.rate = 1; u.pitch = 1; u.volume = 1;
-    u.onstart = () => setCaption(text);
+    u.onstart = () => {
+        updateAIStatus("Speaking...");
+        setCaption(text);
+    }
     u.onend = () => cb && cb();
     synth.cancel(); // stop anything pending before speaking fresh
     synth.speak(u);
@@ -71,15 +91,17 @@ function listenOnce(onResult) {
     if (!r) return;
     recog = r;
     showViz(true);
+    updateAIStatus("Listening...");
     setCaption('Listening… you can say: about me, skills, projects, how many projects, or project name.');
     r.onresult = (e) => {
         showViz(false);
+        updateAIStatus("Idle");
         const said = e.results[0][0].transcript.toLowerCase();
         setStatus('You said: "' + said + '"');
         onResult(said);
     };
-    r.onerror = (e) => { showViz(false); setStatus('Mic error: ' + (e.error || 'unknown')); speak("Sorry, I couldn't hear that.", promptNext); };
-    r.onend = () => { showViz(false); /* if ended with no result, we can reprompt */ };
+    r.onerror = (e) => { showViz(false); updateAIStatus("Idle"); setStatus('Mic error: ' + (e.error || 'unknown')); speak("Sorry, I couldn't hear that.", promptNext); };
+    r.onend = () => { showViz(false); updateAIStatus("Idle"); /* if ended with no result, we can reprompt */ };
     r.start();
 }
 
@@ -203,3 +225,23 @@ window.addEventListener('DOMContentLoaded', () => {
     // Give voices a moment to populate then attempt autoplay
     setTimeout(tryAutoplay, 350);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
