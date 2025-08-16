@@ -33,8 +33,8 @@ async function queryBackend(userText) {
     setCaption("Processing your request…");
 
     try {
-        const res = await fetch("https://ai-backend-by-paritosh-barman.onrender.com/chat", {
-        // const res = await fetch("http://localhost:5000/chat", {
+        // const res = await fetch("https://ai-backend-by-paritosh-barman.onrender.com/chat", {
+        const res = await fetch("http://localhost:5000/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -44,14 +44,20 @@ async function queryBackend(userText) {
         });
 
         const data = await res.json();
-        console.log(data)
-        const reply = data.reply || "Sorry, I couldn’t generate a response.";
 
-        // Save history
-        chatHistory.push({ role: "user", content: userText });
-        chatHistory.push({ role: "model", content: reply });
+        if (data.reply) {
+            const reply = data.reply || "Sorry, I couldn’t generate a response.";
 
-        speak(reply, promptNext);
+
+            // Save history
+            chatHistory.push({ role: "user", content: userText });
+            chatHistory.push({ role: "model", content: reply });
+
+            speak(reply, promptNext);
+        } else {
+            console.log('Enter in here..')
+            routeIntent(userText)
+        }
     } catch (err) {
         console.error("Backend error:", err);
         speak("Sorry, my AI brain is having trouble connecting.", promptNext);
@@ -60,34 +66,139 @@ async function queryBackend(userText) {
     }
 }
 
-// ====== Voice + STT ======
+// // ====== Voice + STT ======
+// const synth = window.speechSynthesis;
+// let recog;
+// let maleVoice = null;
+// let voicesReady = false;
+
+// function pickMaleVoice() {
+//     const voices = synth.getVoices();
+//     maleVoice = voices.find(v => /male/i.test(v.name))
+//         || voices.find(v => /(David|Mark|Alex|John|George|Matthew|Guy|Daniel)/i.test(v.name))
+//         || voices.find(v => /English/i.test(v.lang))
+//         || voices[0] || null;
+//     document.querySelector('#voiceName em').textContent = maleVoice ? maleVoice.name : 'default';
+// }
+
+// function speak(text, cb) {
+//     if (!text) return cb && cb();
+//     const u = new SpeechSynthesisUtterance(text);
+//     if (maleVoice) u.voice = maleVoice;
+//     u.rate = 1; u.pitch = 1; u.volume = 1;
+//     u.onstart = () => {
+//         updateAIStatus("Speaking...");
+//         setCaption(text);
+//     }
+//     u.onend = () => cb && cb();
+//     synth.cancel();
+//     synth.speak(u);
+// }
+
+// // ====== Voice + STT ======
+// const synth = window.speechSynthesis;
+// let recog;
+// let maleVoice = null;
+
+// // ✅ Load voices properly
+// function pickMaleVoice() {
+//     const voices = synth.getVoices();
+//     console.log("Available voices:", voices);
+
+//     maleVoice =
+//         voices.find(v => /male/i.test(v.name)) ||
+//         voices.find(v => /(David|Mark|Alex|John|George|Matthew|Guy|Daniel|James|Paul)/i.test(v.name)) ||
+//         voices.find(v => v.lang === "en-US" && /Google US English/i.test(v.name)) ||
+//         voices[0] || null;
+
+//     if (document.querySelector('#voiceName em')) {
+//         document.querySelector('#voiceName em').textContent = maleVoice
+//             ? maleVoice.name
+//             : "default";
+//     }
+// }
+
+// // ✅ Run once voices are available
+// synth.onvoiceschanged = pickMaleVoice;
+
+// // ====== Speak function ======
+// function speak(text, cb) {
+//     if (!text) return cb && cb();
+
+//     const u = new SpeechSynthesisUtterance(text);
+//     if (maleVoice) u.voice = maleVoice;
+
+//     u.rate = 1;
+//     u.pitch = 0.8;   // ⚡ lower pitch for more "male" tone
+//     u.volume = 1;
+
+//     u.onstart = () => {
+//         updateAIStatus("Speaking...");
+//         setCaption(text);
+//     };
+//     u.onend = () => cb && cb();
+
+//     synth.cancel(); // stop any ongoing speech
+//     synth.speak(u);
+// }
+
+
 const synth = window.speechSynthesis;
-let recog;
 let maleVoice = null;
-let voicesReady = false;
 
 function pickMaleVoice() {
     const voices = synth.getVoices();
-    maleVoice = voices.find(v => /male/i.test(v.name))
-        || voices.find(v => /(David|Mark|Alex|John|George|Matthew|Guy|Daniel)/i.test(v.name))
-        || voices.find(v => /English/i.test(v.lang))
-        || voices[0] || null;
-    document.querySelector('#voiceName em').textContent = maleVoice ? maleVoice.name : 'default';
+    console.log("Available voices:", voices.map(v => v.name));
+
+    // 1️⃣ Try to pick a known male voice
+    maleVoice =
+        voices.find(v => /(David|Mark|Alex|John|George|Matthew|Guy|Daniel|James|Paul|Mike|Sam)/i.test(v.name)) ||
+        voices.find(v => /Google US English/i.test(v.name)) ||
+        voices.find(v => /English/i.test(v.lang)) ||
+        voices[0] || null;
+
+    if (maleVoice) {
+        console.log("✅ Selected voice:", maleVoice.name);
+    } else {
+        console.warn("⚠ No male voice found, using default voice.");
+    }
+
+    if (document.querySelector('#voiceName em')) {
+        document.querySelector('#voiceName em').textContent = maleVoice
+            ? maleVoice.name
+            : "default";
+    }
 }
+
+// Wait until voices are loaded
+synth.onvoiceschanged = pickMaleVoice;
 
 function speak(text, cb) {
     if (!text) return cb && cb();
+
     const u = new SpeechSynthesisUtterance(text);
-    if (maleVoice) u.voice = maleVoice;
-    u.rate = 1; u.pitch = 1; u.volume = 1;
+
+    // ✅ Force voice
+    if (maleVoice) {
+        u.voice = maleVoice;
+    }
+
+    // ✅ Adjust pitch/rate for male tone
+    u.rate = 1;
+    u.pitch = 1;  // lower pitch → deeper male-like
+    u.volume = 1;
+
     u.onstart = () => {
         updateAIStatus("Speaking...");
         setCaption(text);
-    }
+    };
     u.onend = () => cb && cb();
+
     synth.cancel();
     synth.speak(u);
 }
+
+
 
 function setCaption(t) { document.getElementById('caption').textContent = t; }
 function setStatus(t) { document.getElementById('status').textContent = t || ''; }
@@ -124,43 +235,45 @@ function listenOnce(onResult) {
 }
 
 // ====== Dialogue Management ======
-function promptNext() { speak(PROMPT, () => listenOnce(routeIntent)); }
+// function promptNext() { speak(PROMPT, () => listenOnce(routeIntent)); }
+function promptNext() { speak(PROMPT, () => listenOnce(queryBackend)); }
 function startIntro() {
     speak(INTRO, () => {
         chatHistory.push({ role: "model", content: INTRO });
-        speak(PROMPT, () => listenOnce(routeIntent));
+        // speak(PROMPT, () => listenOnce(routeIntent));
+        speak(PROMPT, () => listenOnce(queryBackend));
     });
 }
 
 function routeIntent(utter) {
-    // if (/(about|yourself|who are you|more about)/i.test(utter)) {
-    //     speak(ABOUT, promptNext);
-    //     return;
-    // }
-    // if (/(skill|skills|tech|stack|technology)/i.test(utter)) {
-    //     speak(SKILLS, promptNext);
-    //     return;
-    // }
-    // if (/(project|projects)/i.test(utter)) {
-    //     if (/(how many|count|number)/i.test(utter)) {
-    //         speak(`I have built over 50 projects. Do you want the list?`, () =>
-    //             listenOnce(say => {
-    //                 if (/yes|yeah|sure|ok|okay/i.test(say)) listProjects();
-    //                 else promptNext();
-    //             })
-    //         );
-    //         return;
-    //     }
-    //     const idx = parseProjectIndex(utter);
-    //     if (idx !== -1) { speakProjectDetail(idx); return; }
-    //     listProjects(); return;
-    // }
+    if (/(yourself|who are you|more about)/i.test(utter)) {
+        speak(ABOUT, promptNext);
+        return;
+    }
+    if (/(skill|skills|tech|stack|technology)/i.test(utter)) {
+        speak(SKILLS, promptNext);
+        return;
+    }
+    if (/(project|projects)/i.test(utter)) {
+        if (/(how many|count|number)/i.test(utter)) {
+            speak(`I have built over 50 projects. Do you want the list?`, () =>
+                listenOnce(say => {
+                    if (/yes|yeah|sure|ok|okay/i.test(say)) listProjects();
+                    else promptNext();
+                })
+            );
+            return;
+        }
+        const idx = parseProjectIndex(utter);
+        if (idx !== -1) { speakProjectDetail(idx); return; }
+        listProjects(); return;
+    }
     if (/(repeat|again|replay|intro)/i.test(utter)) { startIntro(); return; }
     const idx2 = parseProjectIndex(utter);
     if (idx2 !== -1) { speakProjectDetail(idx2); return; }
 
     // 🔹 NEW: Fallback to AI backend
-    queryBackend(utter);
+    // queryBackend(utter);
 }
 
 function listProjects() {
@@ -211,7 +324,9 @@ function tryAutoplay() {
 // ====== Wiring ======
 speechSynthesis.onvoiceschanged = () => { voicesReady = true; pickMaleVoice(); };
 document.getElementById('restart').addEventListener('click', () => startIntro());
-document.getElementById('ask').addEventListener('click', () => listenOnce(routeIntent));
+// document.getElementById('ask').addEventListener('click', () => listenOnce(routeIntent));
+// for call ai first
+document.getElementById('ask').addEventListener('click', () => listenOnce(queryBackend));
 document.getElementById('unlock').addEventListener('click', () => {
     document.getElementById('gate').style.display = 'none';
     startIntro();
