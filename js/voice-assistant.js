@@ -3,21 +3,14 @@ const aiStatus = document.getElementById("ai-status");
 const voiceSection = document.getElementById("voice-assistant");
 
 // ====== Status update function ======
-// Call this from your voice assistant JS
 function updateAIStatus(state) {
-    aiStatus.textContent = state; // "Speaking", "Listening", "Idle"
+    aiStatus.textContent = state; // "Speaking", "Listening", "Idle", "Thinking..."
 }
 
-// Example usage in your voice assistant flow:
-// updateAIStatus("Listening...");
-// updateAIStatus("Speaking...");
-// updateAIStatus("Idle");
-
-
-
+// ====== Intro and Static Data ======
 const INTRO = "Hi, I'm Paritosh Barman — an accomplished Full Stack Developer specializing in the MERN stack. I've built over 500 projects across web, Python, and IoT, with a strong focus on clean, efficient, and scalable solutions. My work spans real-time tracking apps, civic engagement platforms, medical systems, and more.";
-
-const PROMPT = "Would you like to know more about me, hear my skills, or learn about my projects? You can also ask how many projects I have built.";
+// const PROMPT = "Would you like to know more about me, hear my skills, or learn about my projects? You can also ask how many projects I have built.";
+const PROMPT = "Would you like to know more about me, my skills or about projects? You can also ask any things.";
 
 const ABOUT = "About me: I am a passionate developer who loves building dynamic, interactive applications that solve real problems. My expertise includes the MERN stack — MongoDB, Express, React, and Node.js — as well as Django for backend services. I've developed production-ready solutions like a Smart Field Manager for real-time executive tracking, a Local Democracy Platform with real-time voting, and other custom applications including learning management systems and inventory platforms. My goal is to lead impactful projects, mentor other developers, and contribute to products that improve daily life. I value adaptability, problem-solving, and creating user experiences that feel seamless.";
 
@@ -31,16 +24,50 @@ const PROJECTS = [
     { id: 5, name: "Product Store", short: "E-commerce style product catalog.", detail: "React storefront consuming DummyJSON API with pagination, filters, and detailed product pages, focusing on reusable components and state management." }
 ];
 
+// ====== History for AI ======
+let chatHistory = []; // {role: "user"|"model", content: "..."}
 
-// ====== Voice + STT plumbing (no backend) ======
+// ====== Backend Query ======
+async function queryBackend(userText) {
+    updateAIStatus("Thinking...");
+    setCaption("Processing your request…");
+
+    try {
+        // const res = await fetch("https://ai-backend-by-paritosh-barman.onrender.com/chat", {
+        const res = await fetch("http://localhost:5000/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                message: userText,
+                history: chatHistory
+            })
+        });
+
+        const data = await res.json();
+        console.log(data)
+        const reply = data.reply || "Sorry, I couldn’t generate a response.";
+
+        // Save history
+        chatHistory.push({ role: "user", content: userText });
+        chatHistory.push({ role: "model", content: reply });
+
+        speak(reply, promptNext);
+    } catch (err) {
+        console.error("Backend error:", err);
+        speak("Sorry, my AI brain is having trouble connecting.", promptNext);
+    } finally {
+        updateAIStatus("Idle");
+    }
+}
+
+// ====== Voice + STT ======
 const synth = window.speechSynthesis;
-let recog; // webkitSpeechRecognition instance
+let recog;
 let maleVoice = null;
 let voicesReady = false;
 
 function pickMaleVoice() {
     const voices = synth.getVoices();
-    // Try explicit male names, or best English fallback
     maleVoice = voices.find(v => /male/i.test(v.name))
         || voices.find(v => /(David|Mark|Alex|John|George|Matthew|Guy|Daniel)/i.test(v.name))
         || voices.find(v => /English/i.test(v.lang))
@@ -58,21 +85,13 @@ function speak(text, cb) {
         setCaption(text);
     }
     u.onend = () => cb && cb();
-    synth.cancel(); // stop anything pending before speaking fresh
+    synth.cancel();
     synth.speak(u);
 }
 
-function setCaption(t) {
-    document.getElementById('caption').textContent = t;
-}
-
-function setStatus(t) {
-    document.getElementById('status').textContent = t || '';
-}
-
-function showViz(on) {
-    document.getElementById('viz').style.visibility = on ? 'visible' : 'hidden';
-}
+function setCaption(t) { document.getElementById('caption').textContent = t; }
+function setStatus(t) { document.getElementById('status').textContent = t || ''; }
+function showViz(on) { document.getElementById('viz').style.visibility = on ? 'visible' : 'hidden'; }
 
 function ensureRecognition() {
     if (!('webkitSpeechRecognition' in window)) {
@@ -81,8 +100,7 @@ function ensureRecognition() {
     }
     const r = new webkitSpeechRecognition();
     r.lang = 'en-US';
-    r.continuous = false; r.interimResults = false;
-    r.maxAlternatives = 1;
+    r.continuous = false; r.interimResults = false; r.maxAlternatives = 1;
     return r;
 }
 
@@ -92,7 +110,7 @@ function listenOnce(onResult) {
     recog = r;
     showViz(true);
     updateAIStatus("Listening...");
-    setCaption('Listening… you can say: about me, skills, projects, how many projects, or project name.');
+    setCaption('Listening… You can say: about me, skills, projects, or ask any other question.');
     r.onresult = (e) => {
         showViz(false);
         updateAIStatus("Idle");
@@ -101,66 +119,58 @@ function listenOnce(onResult) {
         onResult(said);
     };
     r.onerror = (e) => { showViz(false); updateAIStatus("Idle"); setStatus('Mic error: ' + (e.error || 'unknown')); speak("Sorry, I couldn't hear that.", promptNext); };
-    r.onend = () => { showViz(false); updateAIStatus("Idle"); /* if ended with no result, we can reprompt */ };
+    r.onend = () => { showViz(false); updateAIStatus("Idle"); };
     r.start();
 }
 
-// ====== Dialogue management ======
-function promptNext() {
-    speak(PROMPT, () => listenOnce(routeIntent));
-}
-
+// ====== Dialogue Management ======
+function promptNext() { speak(PROMPT, () => listenOnce(routeIntent)); }
 function startIntro() {
-    // Intro → options
-    speak(INTRO, () => speak(PROMPT, () => listenOnce(routeIntent)));
+    speak(INTRO, () => {
+        chatHistory.push({ role: "model", content: INTRO });
+        speak(PROMPT, () => listenOnce(routeIntent));
+    });
 }
 
 function routeIntent(utter) {
-    // Basic routing by keywords
-    if (/(about|yourself|who are you|more about)/i.test(utter)) {
-        speak(ABOUT, promptNext);
-        return;
-    }
-    if (/(skill|skills|tech|stack|technology)/i.test(utter)) {
-        speak(SKILLS, promptNext);
-        return;
-    }
-    if (/(project|projects)/i.test(utter)) {
-        if (/(how many|count|number)/i.test(utter)) {
-            // speak(`I have built ${PROJECTS.length} pluse projects. Do you want the list?`, () => listenOnce(say => {
-            speak(`I have built ${50} pluse projects. Do you want the list?`, () => listenOnce(say => {
-                if (/yes|yeah|sure|ok|okay/i.test(say)) listProjects(); else promptNext();
-            }));
-            return;
-        }
-        // If user mentions a project by name or number
-        const idx = parseProjectIndex(utter);
-        if (idx !== -1) {
-            speakProjectDetail(idx);
-            return;
-        }
-        // Otherwise give the list first
-        listProjects();
-        return;
-    }
-    if (/(repeat|again|replay|intro)/i.test(utter)) {
-        startIntro();
-        return;
-    }
-    // If user says a known project name directly
+    // if (/(about|yourself|who are you|more about)/i.test(utter)) {
+    //     speak(ABOUT, promptNext);
+    //     return;
+    // }
+    // if (/(skill|skills|tech|stack|technology)/i.test(utter)) {
+    //     speak(SKILLS, promptNext);
+    //     return;
+    // }
+    // if (/(project|projects)/i.test(utter)) {
+    //     if (/(how many|count|number)/i.test(utter)) {
+    //         speak(`I have built over 50 projects. Do you want the list?`, () =>
+    //             listenOnce(say => {
+    //                 if (/yes|yeah|sure|ok|okay/i.test(say)) listProjects();
+    //                 else promptNext();
+    //             })
+    //         );
+    //         return;
+    //     }
+    //     const idx = parseProjectIndex(utter);
+    //     if (idx !== -1) { speakProjectDetail(idx); return; }
+    //     listProjects(); return;
+    // }
+    if (/(repeat|again|replay|intro)/i.test(utter)) { startIntro(); return; }
     const idx2 = parseProjectIndex(utter);
     if (idx2 !== -1) { speakProjectDetail(idx2); return; }
 
-    // Fallback
-    speak("Sorry, I didn't catch that. You can say: about me, skills, projects, or a project name like Daily Planner.", promptNext);
+    // 🔹 NEW: Fallback to AI backend
+    queryBackend(utter);
 }
 
 function listProjects() {
     const names = PROJECTS.map(p => p.name).join(', ');
-    speak(`Here are my projects: ${names}. You can say a project name to hear more.`, () => listenOnce(utter => {
-        const i = parseProjectIndex(utter);
-        if (i !== -1) speakProjectDetail(i); else promptNext();
-    }));
+    speak(`Here are my projects: ${names}. You can say a project name to hear more.`, () =>
+        listenOnce(utter => {
+            const i = parseProjectIndex(utter);
+            if (i !== -1) speakProjectDetail(i); else promptNext();
+        })
+    );
 }
 
 function speakProjectDetail(i) {
@@ -170,28 +180,21 @@ function speakProjectDetail(i) {
 }
 
 function parseProjectIndex(utter) {
-    // by explicit name
     let i = PROJECTS.findIndex(p => utter.includes(p.name.toLowerCase()));
     if (i !== -1) return i;
-    // by ordinal/number
     if (/(first|one|1)/i.test(utter)) return 0;
     if (/(second|two|2)/i.test(utter)) return Math.min(1, PROJECTS.length - 1);
     if (/(third|three|3)/i.test(utter)) return Math.min(2, PROJECTS.length - 1);
     return -1;
 }
 
-// ====== Autoplay handling ======
+// ====== Autoplay Handling ======
 function tryAutoplay() {
-    // Some browsers require a user gesture; we attempt once, else show gate
     if (!voicesReady) { pickMaleVoice(); }
-    // If speech is blocked, speaking may be ignored; we detect by timeout
     let started = false;
-    const origSpeak = synth.speak;
-    // just attempt to speak intro; if after 800ms nothing spoke, show gate
-    const u = new SpeechSynthesisUtterance(''); // flush
+    const u = new SpeechSynthesisUtterance('');
     synth.speak(u);
     setTimeout(() => {
-        // try real intro
         const check = new SpeechSynthesisUtterance('');
         check.onstart = () => started = true;
         synth.speak(check);
@@ -206,42 +209,20 @@ function tryAutoplay() {
 }
 
 // ====== Wiring ======
-// Voices can load asynchronously
 speechSynthesis.onvoiceschanged = () => { voicesReady = true; pickMaleVoice(); };
-
-// UI buttons
 document.getElementById('restart').addEventListener('click', () => startIntro());
-
 document.getElementById('ask').addEventListener('click', () => listenOnce(routeIntent));
-
 document.getElementById('unlock').addEventListener('click', () => {
     document.getElementById('gate').style.display = 'none';
     startIntro();
 });
 
-// Start automatically when DOM is ready
+// Start automatically
 window.addEventListener('DOMContentLoaded', () => {
     setCaption('Initializing voice…');
-    // Give voices a moment to populate then attempt autoplay
+    // Wake up backend
+    fetch("https://ai-backend-by-paritosh-barman.onrender.com/")
+        .then(() => console.log("Backend wake-up ping sent"))
+        .catch(err => console.log("Backend wake-up failed:", err));
     setTimeout(tryAutoplay, 350);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

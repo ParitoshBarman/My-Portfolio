@@ -31,11 +31,11 @@
 
 
     .voice-assistant{
-        padding: 25px 0;
+        padding: 100px 0;
     }
 
     .voice-assistant .dot{
-        width: 16px;
+        width: 20px;
     }
 
 }

@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="./styles/toast.css">
     <link rel="stylesheet" href="./styles/voice-assistant.css">
     <link rel="stylesheet" href="responsive.css">
+    <script>
+        // Wake up the Render backend server early to reduce delay in first real API request
+        fetch("https://ai-backend-by-paritosh-barman.onrender.com")
+            .then(() => console.log("✅ Backend wake-up ping sent"))
+            .catch((err) => console.log("❌ Backend wake-up failed:", err));
+    </script>
+
+
     <style>
         .tech-stack {
             margin-top: 10px;
@@ -595,8 +603,8 @@
             <!-- Autoplay fallback overlay -->
             <div class="gate" id="gate">
                 <div class="panel">
-                    <h2>🔊 Enable Audio</h2>
-                    <p>Browsers sometimes block autoplay with speech. Click below to start.</p>
+                    <h2>🔊 Enable Audio for <br /> AI Voice Assistant</h2>
+                    <p style="margin: 10px 0;">Browsers sometimes block autoplay with speech. Click below to start.</p>
                     <button class="btn" id="unlock">Start Voice</button>
                     <div class="hint">Tip: Use Chrome desktop/mobile for best voice + mic support.</div>
                 </div>
