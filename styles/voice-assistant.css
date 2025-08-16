@@ -200,7 +200,7 @@
 /* Floating AI Button */
 .ai-float-btn {
     position: fixed;
-    top: 150px;
+    top: 140px;
     right: 20px;
     background: var(--glass);
     color: var(--text);
