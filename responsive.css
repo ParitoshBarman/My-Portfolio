@@ -30,6 +30,14 @@
     }
 
 
+    .voice-assistant{
+        padding: 0;
+    }
+
+    .voice-assistant .dot{
+        width: 16px;
+    }
+
 }
 
 

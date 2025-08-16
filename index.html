@@ -7,9 +7,9 @@
     <title>My Portfolio</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsive.css">
     <link rel="stylesheet" href="./styles/toast.css">
     <link rel="stylesheet" href="./styles/voice-assistant.css">
+    <link rel="stylesheet" href="responsive.css">
     <style>
         .tech-stack {
             margin-top: 10px;
@@ -33,6 +33,7 @@
             font-size: 12px;
         }
     </style>
+
 </head>
 
 <body>
@@ -45,7 +46,9 @@
             <a href="#SkillsOverview" style="--i:3">Skill</a>
             <a href="#projects" style="--i:4">Project</a>
             <a href="#contact" style="--i:5">Contact</a>
-            <a href="#voice-assistant" style="--i:6">AI Assistant</a>
+            <a href="#voice-assistant" class="ai-link">
+                <i class='bx bxs-bot'></i> AI Assistant
+            </a>
         </nav>
         <div class="container" onclick="myFunction(this)">
             <div class="bar1"></div>
