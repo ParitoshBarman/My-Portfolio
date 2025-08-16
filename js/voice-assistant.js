@@ -74,6 +74,7 @@ let voicesReady = false;
 
 function pickMaleVoice() {
     const voices = synth.getVoices();
+    console.log(voices)
     maleVoice = voices.find(v => /male/i.test(v.name)) ||
         voices.find(v => /male/i.test(v.name)) ||
         voices.find(v => /(Ravi|Male)/i.test(v.name)) ||
@@ -87,8 +88,9 @@ function pickMaleVoice() {
 function speak(text, cb) {
     if (!text) return cb && cb();
     const u = new SpeechSynthesisUtterance(text);
+    console.log(maleVoice.name)
     if (maleVoice) u.voice = maleVoice;
-    u.rate = 1; u.pitch = 0.6; u.volume = 1;
+    u.rate = 1; u.pitch = 0.7; u.volume = 1;
     u.onstart = () => {
         updateAIStatus("Speaking...");
         setCaption(text);
