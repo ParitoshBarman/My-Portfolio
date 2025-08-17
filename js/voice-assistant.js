@@ -8,21 +8,154 @@ function updateAIStatus(state) {
 }
 
 // ====== Intro and Static Data ======
-const INTRO = "Hi, I'm Paritosh Barman — an accomplished Full Stack Developer specializing in the MERN stack. I've built over 500 projects across web, Python, and IoT, with a strong focus on clean, efficient, and scalable solutions. My work spans real-time tracking apps, civic engagement platforms, medical systems, and more.";
-// const PROMPT = "Would you like to know more about me, hear my skills, or learn about my projects? You can also ask how many projects I have built.";
-const PROMPT = "Would you like to know more about me, my skills or about projects? You can also ask any things.";
+// const INTRO = "Hi, I'm Paritosh Barman — an accomplished Full Stack Developer specializing in the MERN stack. I've built over 500 projects across Web, Python, and IoT, with a strong focus on clean, efficient, and scalable solutions. My work spans real-time tracking apps, civic engagement platforms, medical systems, and more.";
+// // const PROMPT = "Would you like to know more about me, hear my skills, or learn about my projects? You can also ask how many projects I have built.";
+// const PROMPT = "Would you like to know more about me, my skills or about projects? You can also ask any things.";
 
-const ABOUT = "About me: I am a passionate developer who loves building dynamic, interactive applications that solve real problems. My expertise includes the MERN stack — MongoDB, Express, React, and Node.js — as well as Django for backend services. I've developed production-ready solutions like a Smart Field Manager for real-time executive tracking, a Local Democracy Platform with real-time voting, and other custom applications including learning management systems and inventory platforms. My goal is to lead impactful projects, mentor other developers, and contribute to products that improve daily life. I value adaptability, problem-solving, and creating user experiences that feel seamless.";
+// const ABOUT = "About me: I am a passionate developer who loves building dynamic, interactive applications that solve real problems. My expertise includes the MERN stack — MongoDB, Express, React, and Node.js — as well as Django for backend services. I've developed production-ready solutions like a Smart Field Manager for real-time executive tracking, a Local Democracy Platform with real-time voting, and other custom applications including learning management systems and inventory platforms. My goal is to lead impactful projects, mentor other developers, and contribute to products that improve daily life. I value adaptability, problem-solving, and creating user experiences that feel seamless.";
 
-const SKILLS = "My technical skills include HTML5, CSS3, JavaScript, React, Redux, Node.js, Express, MongoDB, REST APIs, JWT authentication, responsive web design, Docker deployment, and cloud hosting. I also have experience with Python, Django, Leaflet maps, Socket.IO, and third-party API integrations. My soft skills include adaptability, time management, teamwork, and strong problem-solving.";
+// const SKILLS = "My technical skills include HTML5, CSS3, JavaScript, React, Redux, Node.js, Express, MongoDB, REST APIs, JWT authentication, responsive web design, Docker deployment, and cloud hosting. I also have experience with Python, Django, Leaflet maps, Socket.IO, and third-party API integrations. My soft skills include adaptability, time management, teamwork, and strong problem-solving.";
+// ====== Intro and Static Data ======
+const INTRO =
+    "Hi, I'm Paritosh Barman — a passionate and accomplished Full Stack Developer specializing in the MERN stack. " +
+    "Over the years, I’ve built 500+ projects across Web, Python automation, and IoT — ranging from real-time tracking apps and ERP systems to civic engagement platforms, automation tools, and robotics. " +
+    "I love turning ideas into scalable, production-ready solutions that make a real impact.";
+
+const PROMPT =
+    "Would you like to know more about me, explore my skills, or hear about the projects I’ve built? " +
+    "You can also ask about my journey, freelancing experience, or even how I teach coding and guide others in their projects.";
+
+const ABOUT =
+    "About me: I am a self-made developer who discovered programming during my Diploma in Electrical Engineering, where I first learned C. " +
+    "Although I couldn’t complete the diploma due to Covid-19 and financial struggles, I kept learning and building projects on my own. " +
+    "Later, I mastered JavaScript, advanced React, backend systems, databases, and DSA at Prepleaf by Masai. " +
+    "Since then, I’ve freelanced for clients in Delhi, Rajasthan, and my hometown, while also working on personal automation and IoT projects. " +
+    "I enjoy teaching MERN stack development, helping others build their projects, and solving real-world problems. " +
+    "My goal is to lead impactful projects, mentor developers, and create products that improve daily life.";
+
+const SKILLS =
+    "Technical Skills: \n" +
+    "- Frontend: HTML5, CSS3, JavaScript (ES6+), React.js, Redux, TailwindCSS, Chakra UI.\n" +
+    "- Backend: Node.js, Express.js, Django.\n" +
+    "- Database: MongoDB, PostgreSQL (basic).\n" +
+    "- Other: REST APIs, JWT authentication, Socket.IO, Leaflet maps, Docker, VPS/Cloud hosting (Render, Netlify).\n" +
+    "- Python: Automation with Selenium, OCR tools, Excel-based data handling.\n" +
+    "- Hardware/IoT: Arduino, ESP32, OpenCV, microcontroller programming.\n\n" +
+    "Soft Skills: Adaptability, problem-solving, teamwork, time management, leadership, and mentoring.";
+
+
+// const PROJECTS = [
+//     {
+//         id: 1,
+//         name: "Smart Field Manager",
+//         short: "B2B web app for real-time executive tracking.",
+//         detail:
+//             "Built with React.js, Vite, Node.js, Express.js, and MongoDB. Features include JWT role-based access control, Leaflet maps for live location tracking, file uploads, and direct communication tools like calls and WhatsApp messaging."
+//     },
+//     {
+//         id: 2,
+//         name: "Local Democracy Platform",
+//         short: "Full-stack civic engagement platform with real-time voting.",
+//         detail:
+//             "Developed with React, Redux Toolkit, Chakra UI, Node.js, Express.js, and MongoDB. Includes JWT authentication, role-based dashboards, real-time Socket.IO updates, and a fully responsive, accessible UI."
+//     },
+//     {
+//         id: 3,
+//         name: "ChemiBoost ERP",
+//         short: "ERP software for pharmacies, chemical manufacturers, and hospitals.",
+//         detail:
+//             "Developed with MERN stack. Features include inventory management, sales tracking, marketing automation, and performance analytics. Designed for scalability and role-based access with real-time dashboards."
+//     },
+//     {
+//         id: 4,
+//         name: "Asso Pharmaceuticals Website",
+//         short: "Website for a pharma company.",
+//         detail:
+//             "Developed using Django and MongoDB for Asso Pharmaceuticals, located in Jaipur and Gangapur, Rajasthan. The site features product listings, doctor directories, and automated WhatsApp messaging to customers. It also includes payment tracking with notifications for pending or missed payments, along with a blogging system, auto-slug SEO optimization, and user-based permissions for supervisors and content writers."
+//     },
+//     {
+//         id: 5,
+//         name: "Skill Book Institute Website",
+//         short: "Educational institute website for skill-based courses.",
+//         detail:
+//             "Developed to showcase institute offerings such as Data Entry, AutoCAD, Graphic Designing, and other vocational courses. Located in Rohini Sec-6, Delhi, the institute highlights offline classroom training, guided mentorship, and career-oriented course structures to help students become job-ready."
+//     }
+
+// ];
 
 const PROJECTS = [
-    { id: 1, name: "Smart Field Manager", short: "B2B web app for real-time executive tracking.", detail: "Built with React.js, Vite, Node.js, Express.js, and MongoDB. Features include JWT role-based access control, Leaflet maps for live location tracking, file uploads, and direct communication tools like calls and WhatsApp messaging." },
-    { id: 2, name: "Local Democracy Platform", short: "Full-stack civic engagement platform with real-time voting.", detail: "Developed with React, Redux Toolkit, Chakra UI, Node.js, Express.js, and MongoDB. Includes JWT authentication, role-based dashboards, real-time Socket.IO updates, and a fully responsive, accessible UI." },
-    { id: 3, name: "MERN Notes App", short: "Secure notes app with authentication and CRUD.", detail: "MERN stack application featuring JWT auth, role-based access, and notes management. Frontend built with Chakra UI v3, backend powered by Express and MongoDB." },
-    { id: 4, name: "Daily Planner", short: "Task manager with search debounce and persistent storage.", detail: "React-based planner app with task CRUD, debounce search, local persistence, and optional scroll-to-top and category filters." },
-    { id: 5, name: "Product Store", short: "E-commerce style product catalog.", detail: "React storefront consuming DummyJSON API with pagination, filters, and detailed product pages, focusing on reusable components and state management." }
+    {
+        id: 1,
+        name: "Smart Field Manager",
+        short: "B2B web app for real-time executive tracking.",
+        detail:
+            "Built with React.js, Vite, Node.js, Express.js, and MongoDB. Features include JWT role-based access control, Leaflet maps for live location tracking, file uploads, and direct communication tools like calls and WhatsApp messaging."
+    },
+    {
+        id: 2,
+        name: "Local Democracy Platform",
+        short: "Full-stack civic engagement platform with real-time voting.",
+        detail:
+            "Developed with React, Redux Toolkit, Chakra UI, Node.js, Express.js, and MongoDB. Includes JWT authentication, role-based dashboards, real-time Socket.IO updates, and a fully responsive, accessible UI."
+    },
+    {
+        id: 3,
+        name: "ChemiBoost ERP",
+        short: "ERP software for pharmacies, chemical manufacturers, and hospitals.",
+        detail:
+            "Developed with MERN stack. Features include inventory management, sales tracking, marketing automation, and performance analytics. Designed for scalability and role-based access with real-time dashboards."
+    },
+    {
+        id: 4,
+        name: "Asso Pharmaceuticals Website",
+        short: "Corporate website for a pharma company in Rajasthan.",
+        detail:
+            "Developed using Django and MongoDB for Asso Pharmaceuticals, located in Jaipur and Gangapur. Includes product listings, doctor directories, automated WhatsApp messaging, payment reminders for pending invoices, and a blogging system with auto-slug SEO optimization. Also features supervisor/content-writer permission systems."
+    },
+    {
+        id: 5,
+        name: "Skill Book Institute Website",
+        short: "Educational institute website for skill-based courses.",
+        detail:
+            "Developed to showcase institute offerings such as Data Entry, AutoCAD, Graphic Designing, and other vocational courses. Located in Rohini Sec-6, Delhi, the site emphasizes offline classroom training, guided mentorship, and career-oriented learning paths to help students become job-ready."
+    },
+    {
+        id: 6,
+        name: "Cyber Cafe Auto Form Filler",
+        short: "Automation software for local businesses.",
+        detail:
+            "Python-based automation system that fills government and business forms automatically using Excel data. Improved efficiency for local cyber cafes and reduced manual workload significantly."
+    },
+    {
+        id: 7,
+        name: "Document OCR & Data Extractor",
+        short: "Extract data from Aadhaar, Voter ID, and QR codes.",
+        detail:
+            "Built with Python OCR and automation libraries to extract text from scanned copies of Aadhaar cards, Voter IDs, and Aadhaar QR codes. The extracted data was saved in Excel and later used in auto form-fill systems."
+    },
+    {
+        id: 8,
+        name: "Tatkal Train Ticket Auto-Booking System",
+        short: "Python Selenium automation for high-speed ticket booking.",
+        detail:
+            "Automated train ticket booking system using Python + Selenium + VPS/RDP + Proxies + SMTP servers. Automatically handled OTP fetching and payments, ensuring near 100% ticket success rate within seconds."
+    },
+    {
+        id: 9,
+        name: "Drone & Robotics Automation",
+        short: "Hardware + software robotics projects.",
+        detail:
+            "Developed multiple drone and robotics systems using Arduino, ESP32, and OpenCV. Projects included automation tasks, gesture-controlled robots, and small drone prototypes with hardware and electronic circuit design."
+    },
+    // {
+    //     id: 10,
+    //     name: "Auto Task Distribution App",
+    //     short: "CSV task distribution system for agents.",
+    //     detail:
+    //         "MERN app that auto-assigns uploaded CSV tasks equally among agents. Features include authentication, dashboard views, and exportable reports. Useful for businesses managing large task distributions."
+    // }
 ];
+
 
 // ====== History for AI ======
 let chatHistory = []; // {role: "user"|"model", content: "..."}
@@ -45,19 +178,19 @@ async function queryBackend(userText) {
 
         const data = await res.json();
 
-        if (data.reply) {
-            const reply = data.reply || "Sorry, I couldn’t generate a response.";
+        // if (data.reply) {
+        const reply = data.reply || "Sorry, I couldn’t generate a response.";
 
 
-            // Save history
-            chatHistory.push({ role: "user", content: userText });
-            chatHistory.push({ role: "model", content: reply });
+        // Save history
+        chatHistory.push({ role: "user", content: userText });
+        chatHistory.push({ role: "model", content: reply });
 
-            speak(reply, promptNext);
-        } else {
-            console.log('Enter in here..')
-            routeIntent(userText)
-        }
+        speak(reply, promptNext);
+        // } else {
+        //     console.log('Enter in here..')
+        //     routeIntent(userText)
+        // }
     } catch (err) {
         console.error("Backend error:", err);
         speak("Sorry, my AI brain is having trouble connecting.", promptNext);
@@ -247,26 +380,26 @@ function listenOnce(onResult) {
 }
 
 // ====== Dialogue Management ======
-// function promptNext() { speak(PROMPT, () => listenOnce(routeIntent)); }
-function promptNext() { speak(PROMPT, () => listenOnce(queryBackend)); }
+function promptNext() { speak(PROMPT, () => listenOnce(routeIntent)); }
+// function promptNext() { speak(PROMPT, () => listenOnce(queryBackend)); }
 function startIntro() {
     speak(INTRO, () => {
         chatHistory.push({ role: "model", content: INTRO });
-        // speak(PROMPT, () => listenOnce(routeIntent));
-        speak(PROMPT, () => listenOnce(queryBackend));
+        speak(PROMPT, () => listenOnce(routeIntent));
+        // speak(PROMPT, () => listenOnce(queryBackend));
     });
 }
 
 function routeIntent(utter) {
-    if (/(yourself|who are you|more about)/i.test(utter)) {
+    if (/(about yourself|who are you|more about you)/i.test(utter)) {
         speak(ABOUT, promptNext);
         return;
     }
-    if (/(skill|skills|tech|stack|technology)/i.test(utter)) {
+    if (/(tell me about your skill|tell me about your skills|tell me about your tech stack)/i.test(utter)) {
         speak(SKILLS, promptNext);
         return;
     }
-    if (/(project|projects)/i.test(utter)) {
+    if (/(tell me about project|tell me about project projects)/i.test(utter)) {
         if (/(how many|count|number)/i.test(utter)) {
             speak(`I have built over 50 projects. Do you want the list?`, () =>
                 listenOnce(say => {
@@ -280,12 +413,12 @@ function routeIntent(utter) {
         if (idx !== -1) { speakProjectDetail(idx); return; }
         listProjects(); return;
     }
-    if (/(repeat|again|replay|intro)/i.test(utter)) { startIntro(); return; }
+    if (/(repeat intro|again your intro|replay your intro)/i.test(utter)) { startIntro(); return; }
     const idx2 = parseProjectIndex(utter);
     if (idx2 !== -1) { speakProjectDetail(idx2); return; }
 
     // 🔹 NEW: Fallback to AI backend
-    // queryBackend(utter);
+    queryBackend(utter);
 }
 
 function listProjects() {
@@ -336,9 +469,9 @@ function tryAutoplay() {
 // ====== Wiring ======
 speechSynthesis.onvoiceschanged = () => { voicesReady = true; pickMaleVoice(); };
 document.getElementById('restart').addEventListener('click', () => startIntro());
-// document.getElementById('ask').addEventListener('click', () => listenOnce(routeIntent));
+document.getElementById('ask').addEventListener('click', () => listenOnce(routeIntent));
 // for call ai first
-document.getElementById('ask').addEventListener('click', () => listenOnce(queryBackend));
+// document.getElementById('ask').addEventListener('click', () => listenOnce(queryBackend));
 document.getElementById('unlock').addEventListener('click', () => {
     document.getElementById('gate').style.display = 'none';
     startIntro();
