@@ -16,32 +16,60 @@ function updateAIStatus(state) {
 
 // const SKILLS = "My technical skills include HTML5, CSS3, JavaScript, React, Redux, Node.js, Express, MongoDB, REST APIs, JWT authentication, responsive web design, Docker deployment, and cloud hosting. I also have experience with Python, Django, Leaflet maps, Socket.IO, and third-party API integrations. My soft skills include adaptability, time management, teamwork, and strong problem-solving.";
 // ====== Intro and Static Data ======
+// const INTRO =
+//     "Hi, I'm Paritosh Barman — a passionate and accomplished Full Stack Developer specializing in the MERN stack. " +
+//     "Over the years, I’ve built 500+ projects across Web, Python automation, and IoT — ranging from real-time tracking apps and ERP systems to civic engagement platforms, automation tools, and robotics. " +
+//     "I love turning ideas into scalable, production-ready solutions that make a real impact.";
+
+// const PROMPT =
+//     "Would you like to know more about me, explore my skills, or hear about the projects I’ve built? " +
+//     "You can also ask about my journey, freelancing experience, or even how I teach coding and guide others in their projects.";
+
+// const ABOUT =
+//     "About me: I am a self-made developer who discovered programming during my Diploma in Electrical Engineering, where I first learned C. " +
+//     "Although I couldn’t complete the diploma due to Covid-19 and financial struggles, I kept learning and building projects on my own. " +
+//     "Later, I mastered JavaScript, advanced React, backend systems, databases, and DSA at Prepleaf by Masai. " +
+//     "Since then, I’ve freelanced for clients in Delhi, Rajasthan, and my hometown, while also working on personal automation and IoT projects. " +
+//     "I enjoy teaching MERN stack development, helping others build their projects, and solving real-world problems. " +
+//     "My goal is to lead impactful projects, mentor developers, and create products that improve daily life.";
+
+// const SKILLS =
+//     "Technical Skills: \n" +
+//     "- Frontend: HTML5, CSS3, JavaScript (ES6+), React.js, Redux, TailwindCSS, Chakra UI.\n" +
+//     "- Backend: Node.js, Express.js, Django.\n" +
+//     "- Database: MongoDB, PostgreSQL (basic).\n" +
+//     "- Other: REST APIs, JWT authentication, Socket.IO, Leaflet maps, Docker, VPS/Cloud hosting (Render, Netlify).\n" +
+//     "- Python: Automation with Selenium, OCR tools, Excel-based data handling.\n" +
+//     "- Hardware/IoT: Arduino, ESP32, OpenCV, microcontroller programming.\n\n" +
+//     "Soft Skills: Adaptability, problem-solving, teamwork, time management, leadership, and mentoring.";
+
 const INTRO =
-    "Hi, I'm Paritosh Barman — a passionate and accomplished Full Stack Developer specializing in the MERN stack. " +
-    "Over the years, I’ve built 500+ projects across Web, Python automation, and IoT — ranging from real-time tracking apps and ERP systems to civic engagement platforms, automation tools, and robotics. " +
-    "I love turning ideas into scalable, production-ready solutions that make a real impact.";
+  "Hi, I'm Paritosh Barman — a passionate and accomplished Full Stack Developer specializing in the MERN stack. " +
+  "I’ve built over 500 projects spanning Web Development, Python automation, and IoT — from real-time tracking systems and ERP platforms to civic engagement tools, automation software, and robotics. " +
+  "I love transforming ideas into scalable, production-ready solutions that create real impact.";
 
 const PROMPT =
-    "Would you like to know more about me, explore my skills, or hear about the projects I’ve built? " +
-    "You can also ask about my journey, freelancing experience, or even how I teach coding and guide others in their projects.";
+  "Would you like to know more about me, explore my skills, or dive into the projects I’ve built? " +
+  "You can also ask about my learning journey, freelancing experience, or how I guide and mentor others in coding.";
 
 const ABOUT =
-    "About me: I am a self-made developer who discovered programming during my Diploma in Electrical Engineering, where I first learned C. " +
-    "Although I couldn’t complete the diploma due to Covid-19 and financial struggles, I kept learning and building projects on my own. " +
-    "Later, I mastered JavaScript, advanced React, backend systems, databases, and DSA at Prepleaf by Masai. " +
-    "Since then, I’ve freelanced for clients in Delhi, Rajasthan, and my hometown, while also working on personal automation and IoT projects. " +
-    "I enjoy teaching MERN stack development, helping others build their projects, and solving real-world problems. " +
-    "My goal is to lead impactful projects, mentor developers, and create products that improve daily life.";
+  "About me: I am a self-taught developer who discovered programming during my Diploma in Electrical Engineering, where I first learned C. " +
+  "Although I couldn’t complete the diploma due to Covid-19 and financial struggles, I didn’t stop. I kept learning independently, mastering Python, Django, Selenium, OpenCV, and freelancing with automation and web projects. " +
+  "Later, in August 2023, I joined Prepleaf by Masai, where instructors from IIT Kanpur trained me in advanced JavaScript, React, backend systems, databases, and DSA — making me highly confident in the MERN stack. " +
+  "Since then, I’ve delivered freelance projects for clients in Delhi, Rajasthan, and West Bengal, while also working on personal automation and IoT systems. " +
+  "I enjoy teaching MERN stack development, mentoring beginners, and helping others build real-world projects. " +
+  "My long-term vision is to lead impactful projects, mentor teams, and create products that improve daily life.";
 
 const SKILLS =
-    "Technical Skills: \n" +
-    "- Frontend: HTML5, CSS3, JavaScript (ES6+), React.js, Redux, TailwindCSS, Chakra UI.\n" +
-    "- Backend: Node.js, Express.js, Django.\n" +
-    "- Database: MongoDB, PostgreSQL (basic).\n" +
-    "- Other: REST APIs, JWT authentication, Socket.IO, Leaflet maps, Docker, VPS/Cloud hosting (Render, Netlify).\n" +
-    "- Python: Automation with Selenium, OCR tools, Excel-based data handling.\n" +
-    "- Hardware/IoT: Arduino, ESP32, OpenCV, microcontroller programming.\n\n" +
-    "Soft Skills: Adaptability, problem-solving, teamwork, time management, leadership, and mentoring.";
+  "Technical Skills: \n" +
+  "- Frontend: HTML5, CSS3, JavaScript (ES6+), React.js, Redux, TailwindCSS, Chakra UI.\n" +
+  "- Backend: Node.js, Express.js, Django.\n" +
+  "- Database: MongoDB, PostgreSQL (basic).\n" +
+  "- Other: REST APIs, JWT Authentication, Socket.IO, Leaflet maps, Docker, VPS/Cloud Hosting (Render, Netlify).\n" +
+  "- Python: Automation with Selenium, OCR tools, Excel-based data handling, and desktop applications with Tkinter.\n" +
+  "- Hardware/IoT: Arduino, ESP32, OpenCV, robotics, and microcontroller programming.\n\n" +
+  "Soft Skills: Problem-solving, adaptability, teamwork, leadership, time management, mentoring, and continuous learning.";
+
 
 
 // const PROJECTS = [
@@ -166,8 +194,8 @@ async function queryBackend(userText) {
     setCaption("Processing your request…");
 
     try {
-        // const res = await fetch("https://ai-backend-by-paritosh-barman.onrender.com/chat", {
-            const res = await fetch("http://localhost:5000/chat", {
+        const res = await fetch("https://ai-backend-by-paritosh-barman.onrender.com/chat", {
+            // const res = await fetch("http://localhost:5000/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
