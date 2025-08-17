@@ -391,15 +391,15 @@ function startIntro() {
 }
 
 function routeIntent(utter) {
-    if (/(about yourself|who are you|more about you)/i.test(utter)) {
+    if (/(tell me about yourself|who are you|more about you)/i.test(utter)) {
         speak(ABOUT, promptNext);
         return;
     }
-    if (/(tell me about your skill|tell me about your skills|tell me about your tech stack)/i.test(utter)) {
+    if (/(tell me about your skill|tell me about your skills|tell me about your tech stack|tell about your skill|tell about your skills|tell about your tech stack)/i.test(utter)) {
         speak(SKILLS, promptNext);
         return;
     }
-    if (/(tell me about project|tell me about project projects)/i.test(utter)) {
+    if (/(tell me about your project|tell me about your projects|tell about your project|tell about your projects)/i.test(utter)) {
         if (/(how many|count|number)/i.test(utter)) {
             speak(`I have built over 50 projects. Do you want the list?`, () =>
                 listenOnce(say => {
