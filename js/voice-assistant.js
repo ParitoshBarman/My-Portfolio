@@ -44,31 +44,31 @@ function updateAIStatus(state) {
 //     "Soft Skills: Adaptability, problem-solving, teamwork, time management, leadership, and mentoring.";
 
 const INTRO =
-  "Hi, I'm Paritosh Barman — a passionate and accomplished Full Stack Developer specializing in the MERN stack. " +
-  "I’ve built over 500 projects spanning Web Development, Python automation, and IoT — from real-time tracking systems and ERP platforms to civic engagement tools, automation software, and robotics. " +
-  "I love transforming ideas into scalable, production-ready solutions that create real impact.";
+    "Hi, I'm Paritosh Barman — a passionate and accomplished Full Stack Developer specializing in the MERN stack. " +
+    "I’ve built over 500 projects spanning Web Development, Python automation, and IoT — from real-time tracking systems and ERP platforms to civic engagement tools, automation software, and robotics. " +
+    "I love transforming ideas into scalable, production-ready solutions that create real impact.";
 
 const PROMPT =
-  "Would you like to know more about me, explore my skills, or dive into the projects I’ve built? " +
-  "You can also ask about my learning journey, freelancing experience, or how I guide and mentor others in coding.";
+    "Would you like to know more about me, explore my skills, or dive into the projects I’ve built? " +
+    "You can also ask about my learning journey, freelancing experience, or how I guide and mentor others in coding.";
 
 const ABOUT =
-  "About me: I am a self-taught developer who discovered programming during my Diploma in Electrical Engineering, where I first learned C. " +
-  "Although I couldn’t complete the diploma due to Covid-19 and financial struggles, I didn’t stop. I kept learning independently, mastering Python, Django, Selenium, OpenCV, and freelancing with automation and web projects. " +
-  "Later, in August 2023, I joined Prepleaf by Masai, where instructors from IIT Kanpur trained me in advanced JavaScript, React, backend systems, databases, and DSA — making me highly confident in the MERN stack. " +
-  "Since then, I’ve delivered freelance projects for clients in Delhi, Rajasthan, and West Bengal, while also working on personal automation and IoT systems. " +
-  "I enjoy teaching MERN stack development, mentoring beginners, and helping others build real-world projects. " +
-  "My long-term vision is to lead impactful projects, mentor teams, and create products that improve daily life.";
+    "About me: I am a self-taught developer who discovered programming during my Diploma in Electrical Engineering, where I first learned C. " +
+    "Although I couldn’t complete the diploma due to Covid-19 and financial struggles, I didn’t stop. I kept learning independently, mastering Python, Django, Selenium, OpenCV, and freelancing with automation and web projects. " +
+    "Later, in August 2023, I joined Prepleaf by Masai, where instructors from IIT Kanpur trained me in advanced JavaScript, React, backend systems, databases, and DSA — making me highly confident in the MERN stack. " +
+    "Since then, I’ve delivered freelance projects for clients in Delhi, Rajasthan, and West Bengal, while also working on personal automation and IoT systems. " +
+    "I enjoy teaching MERN stack development, mentoring beginners, and helping others build real-world projects. " +
+    "My long-term vision is to lead impactful projects, mentor teams, and create products that improve daily life.";
 
 const SKILLS =
-  "Technical Skills: \n" +
-  "- Frontend: HTML5, CSS3, JavaScript (ES6+), React.js, Redux, TailwindCSS, Chakra UI.\n" +
-  "- Backend: Node.js, Express.js, Django.\n" +
-  "- Database: MongoDB, PostgreSQL (basic).\n" +
-  "- Other: REST APIs, JWT Authentication, Socket.IO, Leaflet maps, Docker, VPS/Cloud Hosting (Render, Netlify).\n" +
-  "- Python: Automation with Selenium, OCR tools, Excel-based data handling, and desktop applications with Tkinter.\n" +
-  "- Hardware/IoT: Arduino, ESP32, OpenCV, robotics, and microcontroller programming.\n\n" +
-  "Soft Skills: Problem-solving, adaptability, teamwork, leadership, time management, mentoring, and continuous learning.";
+    "Technical Skills: \n" +
+    "- Frontend: HTML5, CSS3, JavaScript (ES6+), React.js, Redux, TailwindCSS, Chakra UI.\n" +
+    "- Backend: Node.js, Express.js, Django.\n" +
+    "- Database: MongoDB, PostgreSQL (basic).\n" +
+    "- Other: REST APIs, JWT Authentication, Socket.IO, Leaflet maps, Docker, VPS/Cloud Hosting (Render, Netlify).\n" +
+    "- Python: Automation with Selenium, OCR tools, Excel-based data handling, and desktop applications with Tkinter.\n" +
+    "- Hardware/IoT: Arduino, ESP32, OpenCV, robotics, and microcontroller programming.\n\n" +
+    "Soft Skills: Problem-solving, adaptability, teamwork, leadership, time management, mentoring, and continuous learning.";
 
 
 
@@ -442,7 +442,7 @@ function routeIntent(utter) {
         if (idx !== -1) { speakProjectDetail(idx); return; }
         listProjects(); return;
     }
-    if (/(repeat intro|again your intro|replay your intro)/i.test(utter)) { startIntro(); return; }
+    if (/(repeat your intro|again your intro|replay your intro)/i.test(utter)) { startIntro(); return; }
     const idx2 = parseProjectIndex(utter);
     if (idx2 !== -1) { speakProjectDetail(idx2); return; }
 
@@ -503,7 +503,9 @@ document.getElementById('ask').addEventListener('click', () => listenOnce(routeI
 // document.getElementById('ask').addEventListener('click', () => listenOnce(queryBackend));
 document.getElementById('unlock').addEventListener('click', () => {
     document.getElementById('gate').style.display = 'none';
-    startIntro();
+    setTimeout(() => {
+        startIntro();
+    }, 2000);
 });
 
 // Start automatically
