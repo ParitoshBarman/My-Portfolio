@@ -423,7 +423,7 @@ function routeIntent(utter) {
 
 function listProjects() {
     const names = PROJECTS.map(p => p.name).join(', ');
-    speak(`Here are my projects: ${names}. You can say a project name to hear more.`, () =>
+    speak(`Here are my some projects: ${names}. You can say a project name to hear more.`, () =>
         listenOnce(utter => {
             const i = parseProjectIndex(utter);
             if (i !== -1) speakProjectDetail(i); else promptNext();
