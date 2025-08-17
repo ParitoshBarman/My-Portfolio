@@ -503,6 +503,7 @@ document.getElementById('ask').addEventListener('click', () => listenOnce(routeI
 // document.getElementById('ask').addEventListener('click', () => listenOnce(queryBackend));
 document.getElementById('unlock').addEventListener('click', () => {
     document.getElementById('gate').style.display = 'none';
+    if (!voicesReady) { pickMaleVoice(); }
     setTimeout(() => {
         startIntro();
     }, 2000);
