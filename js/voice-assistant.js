@@ -408,7 +408,8 @@ function listenOnce(onResult) {
 }
 
 // ====== Dialogue Management ======
-function promptNext() { speak(PROMPT, () => listenOnce(routeIntent)); }
+// function promptNext() { speak(PROMPT, () => listenOnce(routeIntent)); }
+function promptNext() { speak('Ask me anything, I’m listening...', () => listenOnce(routeIntent)); }
 // function promptNext() { speak(PROMPT, () => listenOnce(queryBackend)); }
 function startIntro() {
     speak(INTRO, () => {
