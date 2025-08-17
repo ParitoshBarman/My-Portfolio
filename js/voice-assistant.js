@@ -50,7 +50,7 @@ const INTRO =
 
 const PROMPT =
     "Would you like to know more about me, explore my skills, or dive into the projects I’ve built? " +
-    "You can also ask about my learning journey, freelancing experience, or how I guide and mentor others in coding.";
+    "You can also ask about my learning journey, freelancing experience, or how I guide and mentor others in coding. Ask me anything, I’m listening...";
 
 const ABOUT =
     "About me: I am a self-taught developer who discovered programming during my Diploma in Electrical Engineering, where I first learned C. " +
