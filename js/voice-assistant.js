@@ -166,8 +166,8 @@ async function queryBackend(userText) {
     setCaption("Processing your request…");
 
     try {
-        const res = await fetch("https://ai-backend-by-paritosh-barman.onrender.com/chat", {
-            // const res = await fetch("http://localhost:5000/chat", {
+        // const res = await fetch("https://ai-backend-by-paritosh-barman.onrender.com/chat", {
+            const res = await fetch("http://localhost:5000/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -195,7 +195,7 @@ async function queryBackend(userText) {
         console.error("Backend error:", err);
         speak("Sorry, my AI brain is having trouble connecting.", promptNext);
     } finally {
-        updateAIStatus("Idle");
+        updateAIStatus("AI");
     }
 }
 
@@ -369,13 +369,13 @@ function listenOnce(onResult) {
     setCaption('Listening… You can say: about me, skills, projects, or ask any other question.');
     r.onresult = (e) => {
         showViz(false);
-        updateAIStatus("Idle");
+        updateAIStatus("AI");
         const said = e.results[0][0].transcript.toLowerCase();
         setStatus('You said: "' + said + '"');
         onResult(said);
     };
-    r.onerror = (e) => { showViz(false); updateAIStatus("Idle"); setStatus('Mic error: ' + (e.error || 'unknown')); speak("Sorry, I couldn't hear that.", promptNext); };
-    r.onend = () => { showViz(false); updateAIStatus("Idle"); };
+    r.onerror = (e) => { showViz(false); updateAIStatus("AI"); setStatus('Mic error: ' + (e.error || 'unknown')); speak("Sorry, I couldn't hear that.", promptNext); };
+    r.onend = () => { showViz(false); updateAIStatus("AI"); };
     r.start();
 }
 
