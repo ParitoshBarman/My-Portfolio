@@ -1,6 +1,6 @@
 # Paritosh Barman -- Full Stack Developer Portfolio
 
-[Visit Live Portfolio](https://thunderous-zuccutto-94f498.netlify.app/){:target="_blank"}
+[Visit Live Portfolio](https://thunderous-zuccutto-94f498.netlify.app/)
 
 
 ------------------------------------------------------------------------
@@ -47,16 +47,16 @@ and guides users to explore my background, projects, and career vision.
 
 I'm **Paritosh Barman**, a **Full Stack Developer (MERN)** and
 **Automation Enthusiast**.\
-- From Coochbehar, West Bengal --- currently in Delhi.\
+- From Coochbehar, West Bengal --- currently in Delhi.
 - Self-taught coder who started with **C programming during Diploma in
-Electrical Engineering**.\
+Electrical Engineering**.
 - Couldn't complete the diploma due to Covid-19 & financial struggles,
-but I never stopped learning.\
+but I never stopped learning.
 - Learned **Python, Django, Selenium, OpenCV, Tkinter, server configs**,
-and freelanced for local businesses.\
+and freelanced for local businesses.
 - Later, joined **Prepleaf by Masai (IIT Kanpur instructors)** where I
-mastered **JavaScript, Advanced React, MERN stack, and DSA**.\
-- Built **500+ projects** across web, automation, IoT, and robotics.\
+mastered **JavaScript, Advanced React, MERN stack, and DSA**.
+- Built **500+ projects** across web, automation, IoT, and robotics.
 - Currently looking for **MERN stack internships or full-time roles**
 and aiming to grow into a **technical project leader**.
 
@@ -67,21 +67,21 @@ and aiming to grow into a **technical project leader**.
 ### Freelance Web Projects
 
 -   **Smart Field Manager** -- B2B real-time executive tracking with
-    maps, JWT, and WhatsApp integration.\
--   **ChemiBoost ERP** -- ERP for pharmacies & chemical manufacturers.\
+    maps, JWT, and WhatsApp integration.
+-   **ChemiBoost ERP** -- ERP for pharmacies & chemical manufacturers.
 -   **Asso Pharma Website** -- Django site with doctor directory,
-    WhatsApp automation, and blogging.\
+    WhatsApp automation, and blogging.
 -   **Skill Book Institute** -- Institute site showcasing Data Entry,
     AutoCAD, Graphic Design, and vocational training courses.
 
 ### Automation & Hardware Projects
 
 -   **Tatkal Ticket Automation** -- Selenium + VPS/RDP + OTP handling
-    (near 100% success rate).\
+    (near 100% success rate).
 -   **OCR Tools** -- Extract text from Aadhaar, Voter ID, QR codes into
-    Excel.\
+    Excel.
 -   **Auto Form Fill & Data Entry Software** -- Automated large-scale
-    tasks for cyber cafes.\
+    tasks for cyber cafes.
 -   **Robotics & Drone Systems** -- Using ESP32, Arduino, OpenCV for
     automation.
 
@@ -90,7 +90,7 @@ and aiming to grow into a **technical project leader**.
 ## 🎯 Vision & Goals
 
 My portfolio is more than a resume --- it's **a story told through
-interaction**.\
+interaction**.
 I want recruiters, collaborators, and fellow developers to experience my
 journey naturally.
 
