@@ -103,11 +103,11 @@ developers.
 ## 🔗 Quick Links
 
 -   **Live Portfolio**:
-    <https://thunderous-zuccutto-94f498.netlify.app/>\
+    <https://thunderous-zuccutto-94f498.netlify.app/>
 -   **LinkedIn**: [Paritosh
-    Barman](https://www.linkedin.com/in/paritosh-barman-003257229)\
--   **GitHub**: [ParitoshBarman](https://github.com/ParitoshBarman)\
--   **Email**: <barmanpari163@gmail.com>\
+    Barman](https://www.linkedin.com/in/paritosh-barman-003257229)
+-   **GitHub**: [ParitoshBarman](https://github.com/ParitoshBarman)
+-   **Email**: <barmanpari163@gmail.com>
 -   **Phone**: [+91 9091467852](tel:+919091467852)
 
 ------------------------------------------------------------------------
