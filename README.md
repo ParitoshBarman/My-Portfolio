@@ -1,70 +1,121 @@
-# Paritosh Barman – Full Stack Developer Portfolio
+# Paritosh Barman -- Full Stack Developer Portfolio
 
-[Visit Live Portfolio](https://thunderous-zuccutto-94f498.netlify.app/)
+[Visit Live Portfolio](https://thunderous-zuccutto-94f498.netlify.app/){:target="_blank"}
 
----
 
-##  About This Repository
+------------------------------------------------------------------------
 
-This repository houses the source code for my personal portfolio, where I present my journey and work through an immersive, voice-enabled experience. It’s designed to showcase my growth as a self-taught developer with a strong foundation in both frontend and backend development.
+## 📖 About This Repository
 
----
+This repository contains the source code for my personal portfolio ---
+an interactive, voice-enabled experience powered by a **custom AI Voice
+Assistant** that I created using **Node.js + Express** for the backend
+and **vanilla HTML, CSS, and JavaScript** for the frontend.
 
-##  Features
+Rather than being just another portfolio website, this project reflects
+**my journey, skills, projects, and story in a conversational way**. The
+assistant speaks as me (Paritosh Barman), answers questions naturally,
+and guides users to explore my background, projects, and career vision.
 
-- **Interactive Homepage**  
-  A welcoming UI introducing me and guiding users through the site sections: Home, About, Skills, Projects, Contact.
+------------------------------------------------------------------------
 
-- **About Me**  
-  An overview of my background, tech stack expertise, project experience (500+ real-world projects), and my self-driven learning journey.
+## 🎙️ AI Voice Assistant Features
 
-- **Skills Section**  
-  Highlighting both technical skills (HTML, CSS, JavaScript, React, Node.js, Express, Django, MongoDB, Python, DSA) and professional traits (creativity, communication, problem-solving, teamwork).
+-   **Identity Simulation**\
+    Speaks in first-person as *me*, always staying in character,
+    confident, and human-like.
 
-- **Project Showcase**  
-  Featuring key projects:
-  - **Goo Business** – A business platform with OTP verification, admin panel, tracking, and data exports.
-  - **AutoIMG** – Automates passport-style photomaking with background removal using OpenCV.
-  - **TrackingTime** – Responsive time tracker with animated visuals and design finesse.
+-   **Interactive Conversation**\
+    Understands queries and provides meaningful answers about my skills,
+    projects, freelancing, career, hobbies, and goals.
 
-- **GitHub Activity Stats**  
-  Visual insights into my GitHub contributions (commits, activity timelines).
+-   **Dynamic Flow**\
+    Closes every response with a natural follow-up question, making the
+    interaction smooth and engaging.
 
-- **Contact Section**  
-  Multiple ways to reach out:
-  - Email: barmanpari163@gmail.com  
-  - Phone: +91 9091467852  
-  - LinkedIn & GitHub links for easy connection
+-   **Interview Mode**\
+    Switches to professional, concise, and structured answers (STAR
+    method) when asked interview-style questions.
 
----
+-   **Personal Guidance**\
+    Shares how to connect with me (GitHub, LinkedIn, Email, Phone) and
+    encourages recruiters/collaborators to reach out.
 
-## ​ Tech Stack
+------------------------------------------------------------------------
 
-| Frontend | Backend     | Automation & Tools      |
-|----------|-------------|--------------------------|
-| HTML, CSS, JavaScript, React, Tailwind/Chakra UI | Node.js, Express.js, Django | Python (Selenium, OCR, OpenCV), Docker, REST APIs, JWT, Socket.IO |
+## 🚀 About Me
 
-Other: Hosting (Netlify, VPS), Git, Airtable integration, responsive design, DSA fundamentals
+I'm **Paritosh Barman**, a **Full Stack Developer (MERN)** and
+**Automation Enthusiast**.\
+- From Coochbehar, West Bengal --- currently in Delhi.\
+- Self-taught coder who started with **C programming during Diploma in
+Electrical Engineering**.\
+- Couldn't complete the diploma due to Covid-19 & financial struggles,
+but I never stopped learning.\
+- Learned **Python, Django, Selenium, OpenCV, Tkinter, server configs**,
+and freelanced for local businesses.\
+- Later, joined **Prepleaf by Masai (IIT Kanpur instructors)** where I
+mastered **JavaScript, Advanced React, MERN stack, and DSA**.\
+- Built **500+ projects** across web, automation, IoT, and robotics.\
+- Currently looking for **MERN stack internships or full-time roles**
+and aiming to grow into a **technical project leader**.
 
----
+------------------------------------------------------------------------
 
-## ​ Purpose & Vision
+## 🛠️ Tech & Projects
 
-This portfolio reflects not just my projects but my story—how I evolved from a self-taught coder to a versatile full-stack developer. It merges traditional portfolio structure with an interactive UI + voice-based interface for a more engaging viewer experience.
+### Freelance Web Projects
 
-I invite you to explore, give feedback, and connect—whether you're a recruiter, collaborator, or fellow coder. 
+-   **Smart Field Manager** -- B2B real-time executive tracking with
+    maps, JWT, and WhatsApp integration.\
+-   **ChemiBoost ERP** -- ERP for pharmacies & chemical manufacturers.\
+-   **Asso Pharma Website** -- Django site with doctor directory,
+    WhatsApp automation, and blogging.\
+-   **Skill Book Institute** -- Institute site showcasing Data Entry,
+    AutoCAD, Graphic Design, and vocational training courses.
 
----
+### Automation & Hardware Projects
+
+-   **Tatkal Ticket Automation** -- Selenium + VPS/RDP + OTP handling
+    (near 100% success rate).\
+-   **OCR Tools** -- Extract text from Aadhaar, Voter ID, QR codes into
+    Excel.\
+-   **Auto Form Fill & Data Entry Software** -- Automated large-scale
+    tasks for cyber cafes.\
+-   **Robotics & Drone Systems** -- Using ESP32, Arduino, OpenCV for
+    automation.
+
+------------------------------------------------------------------------
+
+## 🎯 Vision & Goals
+
+My portfolio is more than a resume --- it's **a story told through
+interaction**.\
+I want recruiters, collaborators, and fellow developers to experience my
+journey naturally.
+
+In the next 5 years, I see myself as a **project leader/engineering
+manager**, delivering impactful solutions, leading teams, and mentoring
+developers.
+
+------------------------------------------------------------------------
 
 ## 🔗 Quick Links
 
-- **Live Portfolio**: [https://thunderous-zuccutto-94f498.netlify.app/](https://thunderous-zuccutto-94f498.netlify.app/)  
-- **LinkedIn**: [Paritosh Barman](https://www.linkedin.com/in/paritosh-barman-003257229)  
-- **GitHub**: [ParitoshBarman](https://github.com/ParitoshBarman)  
-- **Email**: [barmanpari163@gmail.com](mailto:barmanpari163@gmail.com)  
-- **Phone**: [+91 9091467852](tel:+919091467852)  
+-   **Live Portfolio**:
+    <https://thunderous-zuccutto-94f498.netlify.app/>\
+-   **LinkedIn**: [Paritosh
+    Barman](https://www.linkedin.com/in/paritosh-barman-003257229)\
+-   **GitHub**: [ParitoshBarman](https://github.com/ParitoshBarman)\
+-   **Email**: <barmanpari163@gmail.com>\
+-   **Phone**: [+91 9091467852](tel:+919091467852)
 
----
+------------------------------------------------------------------------
 
-###  Ready to dive deeper?  
-Ask me about my skills, projects, or how I built this interactive assistant—I'm here to guide you!
+### 💬 Final Note
+
+This portfolio merges **technology + personality**.\
+It's not just about showing my work --- it's about letting you talk to
+me, ask me questions, and discover my journey.
+
+👉 Explore it, interact with it, and feel free to reach out.
