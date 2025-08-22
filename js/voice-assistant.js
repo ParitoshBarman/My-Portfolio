@@ -497,8 +497,35 @@ function tryAutoplay() {
 
 // ====== Wiring ======
 speechSynthesis.onvoiceschanged = () => { voicesReady = true; pickMaleVoice(); };
-document.getElementById('restart').addEventListener('click', () => startIntro());
-document.getElementById('ask').addEventListener('click', () => listenOnce(routeIntent));
+document.getElementById('restart').addEventListener('click', () => {
+    if (recog) {
+        recog.stop();
+    }
+    synth.cancel();
+    startIntro()
+});
+document.getElementById('ask').addEventListener('click', () => {
+    synth.cancel();
+    listenOnce(routeIntent)
+});
+
+document.getElementById('stop').addEventListener('click', () => {
+    // Stop speaking
+    synth.cancel();
+
+    // Stop listening
+    if (recog) {
+        recog.stop();
+    }
+
+    updateAIStatus("Stopped");
+    setCaption("AI Assistant stopped. Click Replay or Ask to continue.");
+    setTimeout(() => {
+        updateAIStatus("AI");
+    }, 5000)
+});
+
+
 // for call ai first
 // document.getElementById('ask').addEventListener('click', () => listenOnce(queryBackend));
 document.getElementById('unlock').addEventListener('click', () => {
