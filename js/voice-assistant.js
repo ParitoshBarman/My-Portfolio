@@ -541,7 +541,28 @@ window.addEventListener('DOMContentLoaded', () => {
     setCaption('Initializing voice…');
     // Wake up backend
     fetch("https://ai-backend-by-paritosh-barman.onrender.com/")
-        .then(() => console.log("Backend wake-up ping sent"))
+        .then(() => {
+            console.log("Backend wake-up ping sent")
+            setTimeout(() => {
+                trackVisitor();
+            }, 5000)
+        })
         .catch(err => console.log("Backend wake-up failed:", err));
     setTimeout(tryAutoplay, 350);
 });
+
+
+// Track visitor function
+function trackVisitor() {
+    fetch("https://ai-backend-by-paritosh-barman.onrender.com/track", {
+        // fetch("http://localhost:5000/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}) // can send extra if needed
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log("👀 Visitor tracked:", data);
+        })
+        .catch(err => console.error("❌ Visitor tracking failed:", err));
+}
