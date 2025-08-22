@@ -543,11 +543,12 @@ window.addEventListener('DOMContentLoaded', () => {
     fetch("https://ai-backend-by-paritosh-barman.onrender.com/")
         .then(() => {
             console.log("Backend wake-up ping sent")
-            setTimeout(() => {
-                trackVisitor();
-            }, 5000)
+            trackVisitor();
         })
-        .catch(err => console.log("Backend wake-up failed:", err));
+        .catch(err => {
+            console.log("Backend wake-up failed:", err)
+            trackVisitor();
+        });
     setTimeout(tryAutoplay, 350);
 });
 
@@ -561,11 +562,11 @@ function trackVisitor() {
     fetch("https://ai-backend-by-paritosh-barman.onrender.com/track", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ visitorId }) 
+        body: JSON.stringify({ visitorId })
     })
         .then(res => res.json())
         .then(data => {
-            
+
             if (data.id) {
                 localStorage.setItem("visitorId", data.id);
             }
