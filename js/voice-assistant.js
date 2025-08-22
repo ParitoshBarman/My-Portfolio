@@ -566,7 +566,7 @@ function trackVisitor() {
         .then(res => res.json())
         .then(data => {
             
-            if (!visitorId && data.id) {
+            if (data.id) {
                 localStorage.setItem("visitorId", data.id);
             }
 
