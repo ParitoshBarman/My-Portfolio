@@ -552,17 +552,24 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Track visitor function
+
+
+
 function trackVisitor() {
+    const visitorId = localStorage.getItem("visitorId");
+
     fetch("https://ai-backend-by-paritosh-barman.onrender.com/track", {
-        // fetch("http://localhost:5000/track", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({}) // can send extra if needed
+        body: JSON.stringify({ visitorId }) 
     })
         .then(res => res.json())
         .then(data => {
-            console.log("👀 Visitor tracked:", data);
+            
+            if (!visitorId && data.id) {
+                localStorage.setItem("visitorId", data.id);
+            }
+
         })
         .catch(err => console.error("❌ Visitor tracking failed:", err));
 }
