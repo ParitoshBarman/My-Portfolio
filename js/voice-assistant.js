@@ -555,22 +555,46 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-
 function trackVisitor() {
     const visitorId = localStorage.getItem("visitorId");
 
+    // Default payload
+    const payload = { visitorId };
+
+    // Try to get location from browser
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                payload.location = {
+                    lat: position.coords.latitude,
+                    lon: position.coords.longitude
+                };
+                sendToServer(payload);
+            },
+            (err) => {
+                console.warn("⚠️ Location permission denied or error:", err);
+                payload.location = null; // fallback
+                sendToServer(payload);
+            }
+        );
+    } else {
+        console.warn("❌ Geolocation not supported in this browser");
+        payload.location = null;
+        sendToServer(payload);
+    }
+}
+
+function sendToServer(payload) {
     fetch("https://ai-backend-by-paritosh-barman.onrender.com/track", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ visitorId })
+        body: JSON.stringify(payload)
     })
         .then(res => res.json())
         .then(data => {
-
             if (data.id) {
                 localStorage.setItem("visitorId", data.id);
             }
-
         })
         .catch(err => console.error("❌ Visitor tracking failed:", err));
 }
