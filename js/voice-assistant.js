@@ -555,7 +555,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-function trackVisitor() {
+async function trackVisitor() {
     const visitorId = localStorage.getItem("visitorId");
 
     // Default payload
@@ -564,11 +564,37 @@ function trackVisitor() {
     // Try to get location from browser
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
-            (position) => {
-                payload.location = {
-                    lat: position.coords.latitude,
-                    lon: position.coords.longitude
-                };
+            async (position) => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+
+                try {
+                    // Call Nominatim reverse geocoding directly in browser
+                    const res = await fetch(
+                        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`,
+                        {
+                            headers: {
+                                "Accept": "application/json",
+                                "User-Agent": "YourAppName/1.0" // required by Nominatim
+                            }
+                        }
+                    );
+                    const place = await res.json();
+
+                    payload.location = {
+                        lat,
+                        lon,
+                        displayName: place.display_name || null,
+                        country: place.address?.country || null,
+                        state: place.address?.state || null,
+                        city: place.address?.city || place.address?.town || place.name || null,
+                        postcode: place.address?.postcode || null
+                    };
+                } catch (err) {
+                    console.warn("⚠️ Reverse geocoding failed:", err);
+                    payload.location = { lat, lon }; // fallback
+                }
+
                 sendToServer(payload);
             },
             (err) => {
@@ -585,7 +611,7 @@ function trackVisitor() {
 }
 
 function sendToServer(payload) {
-    fetch("https://ai-backend-by-paritosh-barman.onrender.com/track", {
+    fetch("https://ai-backend-by-paritosh-barman.onrender.com/track", {   // relative path (works on localhost + Render)
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
@@ -598,3 +624,4 @@ function sendToServer(payload) {
         })
         .catch(err => console.error("❌ Visitor tracking failed:", err));
 }
+
