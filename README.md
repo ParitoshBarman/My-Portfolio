@@ -125,11 +125,11 @@ developers.
 
 | Screenshot Name                   | Description | Screenshot |
 |-----------------------------------|-------------|------------|
-| AI_voice_assistent_section        | Dedicated AI Voice Assistant section where users can interact with the voice-enabled portfolio assistant. | ![AI_voice_assistent_section](./screenshots/AI_voice_assistent_section.png) |
-| Hero_section_with_AI_default_status | Hero section of the portfolio showing AI assistant in default (idle) status. | ![Hero_section_with_AI_default_status](./screenshots/Hero_section_with_AI_default_status.png) |
-| Hero_section_with_AI_speeking_status | Hero section when the AI assistant is actively speaking and responding to user queries. | ![Hero_section_with_AI_speeking_status](./screenshots/Hero_section_with_AI_speeking_status.png) |
-| Start_voice_permition_enable_option | Popup prompting the user to grant microphone access to start voice interaction with the AI assistant. | ![Start_voice_permition_enable_option](./screenshots/Start_voice_permition_enable_option.png) |
-| Visitor_Analytics_Dashboard       | Real-time Visitor Analytics Dashboard tracking IP, location, device, browser, OS, visits, and messages. | ![Visitor_Analytics_Dashboard](./screenshots/Visitor_Analytics_Dashboard.png) |
+| AI_voice_assistent_section        | Dedicated AI Voice Assistant section where users can interact with the voice-enabled portfolio assistant. | ![AI_voice_assistent_section](./Screenshots/AI_voice_assistent_section.png) |
+| Hero_section_with_AI_default_status | Hero section of the portfolio showing AI assistant in default (idle) status. | ![Hero_section_with_AI_default_status](./Screenshots/Hero_section_with_AI_default_status.png) |
+| Hero_section_with_AI_speeking_status | Hero section when the AI assistant is actively speaking and responding to user queries. | ![Hero_section_with_AI_speeking_status](./Screenshots/Hero_section_with_AI_speeking_status.png) |
+| Start_voice_permition_enable_option | Popup prompting the user to grant microphone access to start voice interaction with the AI assistant. | ![Start_voice_permition_enable_option](./Screenshots/Start_voice_permition_enable_option.png) |
+| Visitor_Analytics_Dashboard       | Real-time Visitor Analytics Dashboard tracking IP, location, device, browser, OS, visits, and messages. | ![Visitor_Analytics_Dashboard](./Screenshots/Visitor_Analytics_Dashboard.png) |
 
 
 ------------------------------------------------------------------------
