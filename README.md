@@ -33,6 +33,14 @@ and guides users to explore my background, projects, and career vision.
     Closes every response with a natural follow-up question, making the
     interaction smooth and engaging.
 
+-   **Messaging Option**\
+    Users can **send a message** directly via the AI assistant.
+    Just say "send a message" or "drop a message", and it will be
+    delivered to me via the backend system.
+    And All messages are collected in a backend database system and can be viewed in the
+    **Visitor Analytics Dashboard**.
+
+
 -   **Interview Mode**\
     Switches to professional, concise, and structured answers (STAR
     method) when asked interview-style questions.
@@ -40,6 +48,19 @@ and guides users to explore my background, projects, and career vision.
 -   **Personal Guidance**\
     Shares how to connect with me (GitHub, LinkedIn, Email, Phone) and
     encourages recruiters/collaborators to reach out.
+
+------------------------------------------------------------------------
+
+## 📊 Visitor Analytics Dashboard
+
+-   Tracks **all visitors** to the portfolio website in real time.
+-   Collects details like:
+    - IP address & ISP
+    - Country, State, City
+    - Browser, Operating System, Device
+    - Visit count, first visit, last visit
+-   **View Messages:** Shows messages left by visitors through the AI messaging system.
+-   Helps improve the AI assistant experience and understand audience engagement.
 
 ------------------------------------------------------------------------
 

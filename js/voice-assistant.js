@@ -50,7 +50,9 @@ const INTRO =
 
 const PROMPT =
     "Would you like to know more about me, explore my skills, or dive into the projects I’ve built? " +
-    "You can also ask about my learning journey, freelancing experience, or how I guide and mentor others in coding. Ask me anything, I’m listening...";
+    "You can also ask about my learning journey, freelancing experience, or how I guide and mentor others in coding. " +
+    "If you’d like to send me something, just say like 'I want to send a message' or simply 'drop a message', and I’ll write it down and send it on your behalf. " +
+    "Ask me anything, I’m listening...";
 
 const ABOUT =
     "About me: I am a self-taught developer who discovered programming during my Diploma in Electrical Engineering, where I first learned C. " +
@@ -419,6 +421,29 @@ function startIntro() {
     });
 }
 
+
+function sendMessageToBackend(message) {
+    fetch("https://ai-backend-by-paritosh-barman.onrender.com/message", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === "success") {
+                speak("Your message has been sent successfully. Thank you! Let's go next.", promptNext);
+            } else {
+                speak("Sorry, I couldn’t send your message right now.", promptNext);
+            }
+        })
+        .catch(err => {
+            console.error("❌ Message sending failed:", err);
+            speak("There was an error sending your message.", promptNext);
+        });
+}
+
+
+
 function routeIntent(utter) {
     if (/(tell me about yourself|who are you|more about you)/i.test(utter)) {
         speak(ABOUT, promptNext);
@@ -446,7 +471,18 @@ function routeIntent(utter) {
     const idx2 = parseProjectIndex(utter);
     if (idx2 !== -1) { speakProjectDetail(idx2); return; }
 
-    // 🔹 NEW: Fallback to AI backend
+
+    if (/(send a message|leave a message|i want to message|drop a message)/i.test(utter)) {
+        speak("Sure! What message would you like to send? Just say it out loud. You can also mention your name if you’d like.", () => {
+            listenOnce(msg => {
+                sendMessageToBackend(msg);
+            });
+        });
+        return;
+    }
+
+
+    // Fallback to AI backend
     queryBackend(utter);
 }
 
