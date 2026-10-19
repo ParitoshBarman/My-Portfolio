@@ -378,6 +378,95 @@ main>section {
 
 
 
+.currentWork {
+    width: 100%;
+    padding: 10px 8% 120px;
+}
+
+.currentWork .mainText>h2 {
+    text-align: center;
+    font-size: 43px;
+    margin-bottom: 16px;
+}
+
+.sectionIntro {
+    max-width: 760px;
+    margin: 0 auto 42px;
+    text-align: center;
+    color: #b9c4d6;
+    line-height: 1.7;
+}
+
+.currentWorkGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.currentWorkCard {
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+    min-height: 360px;
+    border: 1px solid rgba(0, 238, 255, .35);
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(13, 38, 62, .95), rgba(12, 20, 42, .92));
+    box-shadow: 0 0 20px rgba(0, 35, 80, .45);
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.currentWorkCard:hover {
+    transform: translateY(-8px);
+    border-color: #0ef;
+    box-shadow: 0 0 28px rgba(0, 238, 255, .25);
+}
+
+.currentWorkIcon {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    color: #081b29;
+    background: #0ef;
+    font-size: 26px;
+}
+
+.currentWorkLabel {
+    color: #6eefff;
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.currentWorkCard h3 {
+    margin: 10px 0 12px;
+    font-size: 28px;
+}
+
+.currentWorkCard p {
+    color: #d6dfed;
+    line-height: 1.7;
+    margin: 0 0 16px;
+}
+
+.currentWorkCard .tech-stack {
+    margin-top: 20px;
+}
+
+.currentWorkLinks a {
+    color: #0ef;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.currentWorkLinks a:hover {
+    text-decoration: underline;
+}
+
 .skillsSection {
     width: 100%;
     display: flex;

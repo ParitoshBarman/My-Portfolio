@@ -1,4 +1,4 @@
-let typed = new Typed("#text", { strings: ["Software Engineer", "Frontend Developer", "Full Stack Developer", "Freelancer", "Python Developer", "Web Developer"], typeSpeed: 80, backSpeed: 50, backDelay: 1000, loop: true })
+let typed = new Typed("#text", { strings: ["Software Engineer", "Full Stack Developer", "AI Product Developer", "Backend Engineer", "Computer Vision Builder"], typeSpeed: 80, backSpeed: 50, backDelay: 1000, loop: true })
 
 
 let navEle = document.querySelector(".navbar")
