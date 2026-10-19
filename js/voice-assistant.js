@@ -223,8 +223,9 @@ async function queryBackend(userText) {
   try {
     const res = await fetch(
       "https://ai-backend-by-paritosh-barman.onrender.com/chat",
+      // "http://localhost:5000/chat",
+      // const res = await fetch("http://localhost:5000/chat", {
       {
-        // const res = await fetch("http://localhost:5000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
